@@ -80,7 +80,7 @@
       label="First Name"
       required
     ></v-text-field>
-      </v-text-field>
+    
     <v-text-field class="ma-6"
       v-model="name"
       :counter="10"

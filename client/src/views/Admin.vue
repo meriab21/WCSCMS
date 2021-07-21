@@ -4,22 +4,26 @@
     <v-toolbar color="blue-grey darken-4" >
       
        <v-icon color="white" @click="drawer = !drawer">menu_open</v-icon>
+<<<<<<< HEAD
         <v-toolbar-title class="text-uppercase grey--text"></v-toolbar-title>
+=======
+        <v-toolbar-title class="text-uppercase grey--text">
+>>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
         <span class="font-weight-light white--text"> </span>
         <span class="white--text mx-4" > Admin</span>
 
         
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >My Account</span>
             <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >Notification</span>
             <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
     
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >Sign Out</span>
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -30,18 +34,28 @@
 
     <v-list>
     <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
-
-    <v-list-item-action>
-        <v-icon class="mx-4">{{link.icon}}</v-icon>
-    </v-list-item-action>
+         <v-list-item-action>
+            <v-icon class="mx-4">{{link.icon}}</v-icon>
+        </v-list-item-action>
 
         <v-list-item-content>
            <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
         </v-list-item-content>
+<<<<<<< HEAD
        
     </v-list-item>
     </v-list>
 </v-navigation-drawer>
+=======
+
+       </v-list-item>   
+    </v-list>
+</v-navigation-drawer>
+</nav>
+
+
+
+>>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
 <v-container fluid>
     <v-row justify="center">
       <v-subheader>List of Accounts</v-subheader>
@@ -110,20 +124,14 @@
                 <strong v-html="message.title"></strong>
               </v-col>
 
-              <!-- <v-col
-                v-if="message.excerpt"
-                class="grey--text text-truncate hidden-sm-and-down"
-              >
-                &mdash;
-                {{ message.excerpt }}
-              </v-col> -->
+          
             </v-row>
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>
             <v-divider></v-divider>
 
-            <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
+            <v-card text class="pa-3" v-for="info in infos" :key="info.title">
               <v-layout row warp >
                 <v-flex xs12 md6>
                   <div class="caption grey--text ">Name</div>
@@ -162,6 +170,7 @@
 
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
@@ -204,6 +213,18 @@ export default {
        { title: 'Users 3', date: '23st june 2019', status: 'deleted'},
       ]
 }
-    }
+    }, // data end
+    mounted(){
+    axios.get('http://localhost:3000/customers')
+    .then((res)=>{
+      this.customers = res.data
+      console.log(res.data.username)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  },
 }
+    
+
 </script>

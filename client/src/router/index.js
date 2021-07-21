@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
 import Login from './views/Login';
+import Admin from './views/Admin';
 
 Vue.use(VueRouter)
 
@@ -16,9 +17,17 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   mode:'history',
   routes:[
-    {path:'/',component:Home},
-      {path:'/Noncustomer',component:Noncustomer},
+    {
+      path:'/',
+      component:Home
+    },
+   
+      {
+        path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
+     {path:'/admin',component:Admin},
+       
+     {path:'/create-account',component:CreateAccount},
    ]
  })
 

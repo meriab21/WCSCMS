@@ -29,17 +29,24 @@
         
     
     <v-text-field
-      v-model="name"
+      v-model="Fname"
       :counter="10"
       :rules="nameRules"
-      label="Name"
+      label="Fisrt Name"
       required
     ></v-text-field>
-
     <v-text-field
+<<<<<<< HEAD
+
       v-model="location"
        :rules="[v => !!v || ' Location is required']"
       label="Location"
+=======
+      v-model="Lname"
+      :counter="10"
+      :rules="nameRules"
+      label="Last Name"
+
       required
     ></v-text-field>
      <v-menu
@@ -77,7 +84,13 @@
       label="Phone number"
       required
     ></v-text-field>
-
+   <v-text-field
+      v-model="location"
+      :counter="10"
+      :rules="nameRules"
+      label="location"
+      required
+    ></v-text-field>
     <v-select
       v-model="select"
       :items="items"
@@ -85,13 +98,14 @@
       label="Case"
       required
     ></v-select>
+    
+ 
     <v-textarea
+      v-model="description"
       clearable
       clear-icon="mdi-close-circle"
      value="Please fill your report here"
     ></v-textarea>
-
-   
 
     <v-btn
       :disabled="!valid"
@@ -111,20 +125,33 @@
 <script>
 
 export default {
-    name:"Noncustomer",
+    name:"app",
     data: () => ({
        fromDateVal: null,
       valid: true,
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
+        v => (v && v.length <= 20) || 'Name must be less than 20 characters',
+      ],
+<<<<<<< HEAD
+    
+=======
+      Lname: '',
+      nameRules: [
+        v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
-    
+      
+>>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
        phoneNumber: '',
       phoneNumberRules: [
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
+      ],
+      location: '',
+      locationRules: [
+        v => !!v || 'Location is required',
       ],
       select: null,
       items: [
@@ -138,10 +165,40 @@ export default {
 
     methods: {
       validate () {
-        this.$refs.form.validate()
+        if (this.$refs.form.validate()){
+        return axios({
+        method: 'post',
+          data: {
+            Fname: this.Fname,
+            Lname: this.Lname,
+            phoneNumber: this.phoneNumber,
+            location: this.location,
+            select: this.select,
+            description: this.description,
       },
+   url: 'http://localhost:3000/controllers/emergencys',
+    headers: {
+       'Content-Type': 'application/json',
+      },
+<<<<<<< HEAD
     }
      ,computed: {
       fromDateDisp() {
         return this.fromDateVal; }}}  
+=======
+    })
+   .then(() => {
+     this.$router.push({ path:'/',component:Home});
+     this.$refs.form.reset();
+ })
+    .catch(() => {
+     });
+      }
+   return true;
+ },
+      }
+      
+    }
+  
+>>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
 </script>

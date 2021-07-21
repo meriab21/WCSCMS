@@ -31,7 +31,7 @@
     <v-text-field
       v-model="Fname"
       :counter="10"
-      :rules="nameRules"
+      :rules="FnameRules"
       label="Fisrt Name"
       required
     ></v-text-field>
@@ -44,7 +44,7 @@
 =======
       v-model="Lname"
       :counter="10"
-      :rules="nameRules"
+      :rules="LnameRules"
       label="Last Name"
 
       required
@@ -78,8 +78,8 @@
       ></v-date-picker>
     </v-menu>
      <v-text-field
-      v-model="phoneNumber"
-      :rules="phoneNumberRules"
+      v-model="phone_no"
+      :rules="phone_noRules"
       
       label="Phone number"
       required
@@ -104,7 +104,7 @@
       v-model="description"
       clearable
       clear-icon="mdi-close-circle"
-     value="Please fill your report here"
+     lable="Please fill your report here"
     ></v-textarea>
 
     <v-btn
@@ -129,8 +129,13 @@ export default {
     data: () => ({
        fromDateVal: null,
       valid: true,
+<<<<<<< HEAD
       name: '',
       nameRules: [
+=======
+      Fname: '',
+      FnameRules: [
+>>>>>>> 569570f42c48a779860f5628f9a7c14120bc88da
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 20 characters',
       ],
@@ -138,14 +143,19 @@ export default {
     
 =======
       Lname: '',
-      nameRules: [
+      FnameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
       
+<<<<<<< HEAD
 >>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
        phoneNumber: '',
       phoneNumberRules: [
+=======
+       phone_no: '',
+      phone_noRules: [
+>>>>>>> 569570f42c48a779860f5628f9a7c14120bc88da
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
       ],
@@ -160,6 +170,7 @@ export default {
         'Accident',
         'Rain',
       ],
+      description:'',
      
     }),
 
@@ -171,7 +182,7 @@ export default {
           data: {
             Fname: this.Fname,
             Lname: this.Lname,
-            phoneNumber: this.phoneNumber,
+            phone_no: this.phone_no,
             location: this.location,
             select: this.select,
             description: this.description,

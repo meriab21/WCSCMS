@@ -122,6 +122,13 @@
 </nav>
 </v-container>
 
+<<<<<<< HEAD
+=======
+    <v-content>
+      <!--  -->
+    </v-content>
+  </v-app>
+>>>>>>> 569570f42c48a779860f5628f9a7c14120bc88da
 </template>
 
 

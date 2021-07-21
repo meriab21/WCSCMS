@@ -38,7 +38,7 @@
         <v-list-item-content>
            <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
         </v-list-item-content>
-           <v-list-item-title>
+          
     </v-list-item>
     </v-list>
     

@@ -7,6 +7,13 @@ import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
 import Login from './views/Login';
 import Customer from './views/Customer';
+import Admin from './views/Admin';
+import CreateAccount from './views/CreateAccount';
+import ViewStatus from './views/ViewStatus';
+import ViewBill from './views/ViewBill';
+import CustomerService from './views/CustomerService';
+import SendBill from './views/SendBill';
+
 
 Vue.use(VueRouter)
 
@@ -21,6 +28,12 @@ const router = new VueRouter({
       {path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
        {path:'/Customer',component:Customer},
+       {path:'/Admin',component:Admin},
+       {path:'/CreateAccount',component:CreateAccount},
+       {path:'/ViewStatus',component:ViewStatus},
+      {path:'/ViewBill',component:ViewBill},
+       {path:'/CustomerService',component:CustomerService},
+       {path:'/SendBill',component:SendBill},
    ]
  })
 

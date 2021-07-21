@@ -4,11 +4,11 @@
     <v-toolbar color="blue-grey darken-4" >
       
        <v-icon color="white" @click="drawer = !drawer">menu_open</v-icon>
-        </v-toolbar-title class="text-uppercase grey--text">
+        <v-toolbar-title class="text-uppercase grey--text"></v-toolbar-title>
         <span class="font-weight-light white--text"> </span>
         <span class="white--text mx-4" > Admin</span>
 
-        </v-toolbar-title>
+        
         <v-spacer></v-spacer>
         <v-btn flat color="blue-grey darken-4">
             <span class="white--text" >My Account</span>
@@ -26,7 +26,7 @@
     </v-toolbar>
 
 <v-navigation-drawer app v-model="drawer" class="blue-grey lighten-5">
-    <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
+    <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
     <v-list>
     <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
@@ -38,11 +38,10 @@
         <v-list-item-content>
            <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
         </v-list-item-content>
-           </v-list-item-title>
+       
     </v-list-item>
     </v-list>
 </v-navigation-drawer>
-</nav>
 <v-container fluid>
     <v-row justify="center">
       <v-subheader>List of Accounts</v-subheader>
@@ -156,7 +155,7 @@
   </v-container>
 
 
-
+</nav>
 </v-container>
 
 </template>

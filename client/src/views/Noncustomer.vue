@@ -37,11 +37,39 @@
     ></v-text-field>
 
     <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
+      v-model="location"
+       :rules="[v => !!v || ' Location is required']"
+      label="Location"
       required
     ></v-text-field>
+     <v-menu
+      v-model="fromDateMenu"
+      :close-on-content-click="false"
+      :nudge-right="40"
+      lazy
+      transition="scale-transition"
+      offset-y
+      full-width
+      max-width="290px"
+      min-width="290px"
+    >
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          label="Date"
+           :rules="[v => !!v || ' Date is required']"
+          readonly
+          :value="fromDateDisp"
+          v-on="on"
+        ></v-text-field>
+      </template>
+      <v-date-picker
+        locale="en-in"
+    
+        v-model="fromDateVal"
+        no-title
+        @input="fromDateMenu = false"
+      ></v-date-picker>
+    </v-menu>
      <v-text-field
       v-model="phoneNumber"
       :rules="phoneNumberRules"
@@ -85,17 +113,14 @@
 export default {
     name:"Noncustomer",
     data: () => ({
+       fromDateVal: null,
       valid: true,
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
+    
        phoneNumber: '',
       phoneNumberRules: [
         [v => !!v || 'This field is required',
@@ -115,6 +140,8 @@ export default {
       validate () {
         this.$refs.form.validate()
       },
-    },
-  }
+    }
+     ,computed: {
+      fromDateDisp() {
+        return this.fromDateVal; }}}  
 </script>

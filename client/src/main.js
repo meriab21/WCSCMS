@@ -10,6 +10,7 @@ import Customer from './views/Customer';
 import Admin from './views/Admin';
 import CreateAccount from './views/CreateAccount';
 import UserProfile from './views/UserProfile';
+import ForgotPassword from './views/ForgotPassword';
 Vue.use(VueRouter)
 
 import './SCSS/main.SCSS';
@@ -35,7 +36,7 @@ const router = new VueRouter({
               {path:'/Admin',component:Admin},
               {path:'/create-account',component:CreateAccount},
               {path:'/user-profile',component:UserProfile},
-
+              {path:'/Forgot-password',component:ForgotPassword},
       ]
  })
  Vue.use(vuetify);

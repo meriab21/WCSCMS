@@ -49,7 +49,7 @@
       label="Payment_date"
       required
     ></v-text-field>
-    <v-btn
+    <v-btn 
       :disabled="!valid"
       color="success"
       class="mr-4"

@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import VueRouter from 'vue-router';
+import VueRouter from 'vue-router'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css'
+
+
 
 import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
@@ -9,14 +13,13 @@ import Login from './views/Login';
 import Customer from './views/Customer';
 import Admin from './views/Admin';
 import CreateAccount from './views/CreateAccount';
-<<<<<<< HEAD
-import ViewStatus from './views/ViewStatus';
-import ViewBill from './views/ViewBill';
+import AboutUs from './views/AboutUs';
+import Team from './views/Team';
 import CustomerService from './views/CustomerService';
 import SendBill from './views/SendBill';
-
-=======
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
+import OperationMaintenance from './views/OperationMaintenance';
+import Assistant from './views/Assistant';
+import ContactUs from './views/ContactUs';
 
 Vue.use(VueRouter)
 
@@ -42,18 +45,13 @@ const router = new VueRouter({
      {path:'/Login',component:Login},
        {path:'/Customer',component:Customer},
        {path:'/Admin',component:Admin},
-<<<<<<< HEAD
-       {path:'/CreateAccount',component:CreateAccount},
-       {path:'/ViewStatus',component:ViewStatus},
-      {path:'/ViewBill',component:ViewBill},
+       {path:'/Assistant',component:Assistant},
+    {path:'/Team',component:Team},
+    {path:'/ContactUs',component:ContactUs},
        {path:'/CustomerService',component:CustomerService},
        {path:'/SendBill',component:SendBill},
-=======
-       
-       {path:'/create-account',component:CreateAccount},
-
-       
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
+       {path:'/OperationMaintenance',component:OperationMaintenance},
+      {path:'/AboutUs',component:AboutUs},
    ]
  })
  Vue.use(vuetify);

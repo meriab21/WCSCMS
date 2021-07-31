@@ -9,15 +9,15 @@
       justify="center"
       no-gutters
     > 
-      <v-btn
+      <v-btn router :to="link.route"
         v-for="link in links"
-        :key="link"
+        :key="link.text"
         
         text
         rounded
         class="my-2"
       >
-        {{ link }}
+        {{ link.text }}
       </v-btn>
       <v-col
         class="flat py-4 text-center "
@@ -30,17 +30,20 @@
    </v-container>
 </template>
 <script>
+import AboutUsVue from '../views/AboutUs.vue';
+
 export default {
     name:'Footer',
    
   data: () => ({
-      links: [
-        'Home',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us',
+   
+links: [
+  {text:'Home',route :'/'},    
+{text:'About Us',route :'/AboutUs'},
+{text:'Team',route :'/Team'},
+{text:'Contact Us',route :'ContactUs/'},
+
+      
       ],
     }),
 

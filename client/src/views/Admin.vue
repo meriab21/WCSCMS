@@ -1,20 +1,5 @@
 <template>
 <v-container>
-<<<<<<< HEAD
-<nav> 
-    <v-toolbar color="blue-grey darken-4" >
-      
-       <v-icon color="white" @click="drawer = !drawer">menu_open</v-icon>
-<<<<<<< HEAD
-        <v-toolbar-title class="text-uppercase grey--text"></v-toolbar-title>
-=======
-        <v-toolbar-title class="text-uppercase grey--text">
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
-        <span class="font-weight-light white--text"> </span>
-        <span class="white--text mx-4" > Admin</span>
-
-        
-=======
     <nav>
       <v-toolbar flat color="blue-grey darken-4" app>
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
@@ -22,7 +7,6 @@
           <span class="font-weight-light white--text"> </span>
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
->>>>>>> a558992d79bb19009d300772984c5dde85bae445
         <v-spacer></v-spacer>
         <v-btn flat color="blue-grey darken-4">
           <span class="white--text">My Account</span>
@@ -32,38 +16,6 @@
           <span class="white--text">Notification</span>
           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
-<<<<<<< HEAD
-    </v-toolbar>
-
-<v-navigation-drawer app v-model="drawer" class="blue-grey lighten-5">
-    <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
-
-    <v-list>
-    <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
-         <v-list-item-action>
-            <v-icon class="mx-4">{{link.icon}}</v-icon>
-        </v-list-item-action>
-
-        <v-list-item-content>
-           <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
-        </v-list-item-content>
-<<<<<<< HEAD
-       
-    </v-list-item>
-    </v-list>
-</v-navigation-drawer>
-=======
-
-       </v-list-item>   
-    </v-list>
-</v-navigation-drawer>
-</nav>
-
-
-
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
-<v-container fluid>
-=======
 
         <v-btn flat color="blue-grey darken-4">
           <span class="white--text">Sign Out</span>
@@ -91,14 +43,12 @@
                 <v-list-item-content>
                   <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
                 </v-list-item-content>
-                  </v-list-item-title>
             </v-list-item>
             </v-list> 
       </v-navigation-drawer>
     </nav>
 
   <v-container fluid>
->>>>>>> a558992d79bb19009d300772984c5dde85bae445
     <v-row justify="center">
       <v-subheader>List of Accounts</v-subheader>
 
@@ -177,11 +127,6 @@
     </v-row>
   </v-container>
 
-<<<<<<< HEAD
-
-</nav>
-=======
->>>>>>> a558992d79bb19009d300772984c5dde85bae445
 </v-container>
 </template>
 

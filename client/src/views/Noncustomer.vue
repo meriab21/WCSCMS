@@ -32,65 +32,31 @@
       v-model="Fname"
       :counter="10"
       :rules="FnameRules"
-      label="Fisrt Name"
+      label=" First Name"
       required
     ></v-text-field>
-    <v-text-field
-<<<<<<< HEAD
-
-      v-model="location"
-       :rules="[v => !!v || ' Location is required']"
-      label="Location"
-=======
+     <v-text-field
       v-model="Lname"
       :counter="10"
       :rules="LnameRules"
-      label="Last Name"
-
+      label=" Last Name"
       required
     ></v-text-field>
-     <v-menu
-      v-model="fromDateMenu"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      lazy
-      transition="scale-transition"
-      offset-y
-      full-width
-      max-width="290px"
-      min-width="290px"
-    >
-      <template v-slot:activator="{ on }">
-        <v-text-field
-          label="Date"
-           :rules="[v => !!v || ' Date is required']"
-          readonly
-          :value="fromDateDisp"
-          v-on="on"
-        ></v-text-field>
-      </template>
-      <v-date-picker
-        locale="en-in"
-    
-        v-model="fromDateVal"
-        no-title
-        @input="fromDateMenu = false"
-      ></v-date-picker>
-    </v-menu>
+
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
      <v-text-field
-      v-model="phone_no"
-      :rules="phone_noRules"
+      v-model="phoneNumber"
+      :rules="phoneNumberRules"
       
       label="Phone number"
       required
     ></v-text-field>
-   <v-text-field
-      v-model="location"
-      :counter="10"
-      :rules="nameRules"
-      label="location"
-      required
-    ></v-text-field>
+
     <v-select
       v-model="select"
       :items="items"
@@ -98,14 +64,13 @@
       label="Case"
       required
     ></v-select>
-    
- 
     <v-textarea
-      v-model="description"
       clearable
       clear-icon="mdi-close-circle"
-     lable="Please fill your report here"
+     value="Please fill your report here"
     ></v-textarea>
+
+   
 
     <v-btn
       :disabled="!valid"
@@ -125,43 +90,24 @@
 <script>
 
 export default {
-    name:"app",
+    name:"Noncustomer",
     data: () => ({
-       fromDateVal: null,
-      valid: true,
-<<<<<<< HEAD
-      name: '',
-      nameRules: [
-=======
+      // valid: true,
       Fname: '',
       FnameRules: [
->>>>>>> 569570f42c48a779860f5628f9a7c14120bc88da
         v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 20 characters',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
-<<<<<<< HEAD
+        Lname: '',
+      LnameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
     
-=======
-      Lname: '',
-      FnameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
-      ],
-      
-<<<<<<< HEAD
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
        phoneNumber: '',
       phoneNumberRules: [
-=======
-       phone_no: '',
-      phone_noRules: [
->>>>>>> 569570f42c48a779860f5628f9a7c14120bc88da
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
-      ],
-      location: '',
-      locationRules: [
-        v => !!v || 'Location is required',
       ],
       select: null,
       items: [
@@ -170,46 +116,13 @@ export default {
         'Accident',
         'Rain',
       ],
-      description:'',
      
     }),
 
     methods: {
       validate () {
-        if (this.$refs.form.validate()){
-        return axios({
-        method: 'post',
-          data: {
-            Fname: this.Fname,
-            Lname: this.Lname,
-            phone_no: this.phone_no,
-            location: this.location,
-            select: this.select,
-            description: this.description,
+        this.$refs.form.validate()
       },
-   url: 'http://localhost:3000/controllers/emergencys',
-    headers: {
-       'Content-Type': 'application/json',
-      },
-<<<<<<< HEAD
-    }
-     ,computed: {
-      fromDateDisp() {
-        return this.fromDateVal; }}}  
-=======
-    })
-   .then(() => {
-     this.$router.push({ path:'/',component:Home});
-     this.$refs.form.reset();
- })
-    .catch(() => {
-     });
-      }
-   return true;
- },
-      }
-      
-    }
-  
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
+    },
+  }
 </script>

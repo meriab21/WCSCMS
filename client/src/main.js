@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import VueRouter from 'vue-router';
+import VueRouter from 'vue-router'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css'
+
+
 
 import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
@@ -9,15 +13,13 @@ import Login from './views/Login';
 import Customer from './views/Customer';
 import Admin from './views/Admin';
 import CreateAccount from './views/CreateAccount';
-
-
-// import ViewStatus from './views/ViewStatus';
-// import ViewBill from './views/ViewBill';
+import AboutUs from './views/AboutUs';
+import Team from './views/Team';
 import CustomerService from './views/CustomerService';
 import SendBill from './views/SendBill';
-
-import UserProfile from './views/UserProfile';
-import ForgotPassword from './views/ForgotPassword';
+import OperationMaintenance from './views/OperationMaintenance';
+import Assistant from './views/Assistant';
+import ContactUs from './views/ContactUs';
 
 Vue.use(VueRouter)
 
@@ -44,28 +46,14 @@ const router = new VueRouter({
      {path:'/Login',component:Login},
        {path:'/Customer',component:Customer},
        {path:'/Admin',component:Admin},
-
-       {path:'/CreateAccount',component:CreateAccount},
-      //  {path:'/ViewStatus',component:ViewStatus},
-      // {path:'/ViewBill',component:ViewBill},
+       {path:'/Assistant',component:Assistant},
+    {path:'/Team',component:Team},
+    {path:'/ContactUs',component:ContactUs},
        {path:'/CustomerService',component:CustomerService},
        {path:'/SendBill',component:SendBill},
-
-       
-
-       
-  ],
-      routes:[
-            {path:'/',component:Home},
-              {path:'/Noncustomer',component:Noncustomer},
-            {path:'/Login',component:Login},
-              {path:'/Customer',component:Customer},
-              {path:'/Admin',component:Admin},
-              {path:'/create-account',component:CreateAccount},
-              {path:'/user-profile',component:UserProfile},
-              {path:'/Forgot-password',component:ForgotPassword},
-      ]
-
+       {path:'/OperationMaintenance',component:OperationMaintenance},
+      {path:'/AboutUs',component:AboutUs},
+   ]
  })
  Vue.use(vuetify);
 

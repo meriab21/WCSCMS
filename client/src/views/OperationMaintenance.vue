@@ -22,7 +22,7 @@
          
               <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
             <span class="font-weight-light white--text"> </span>
-        <span class="white--text mx-4" > Customer Service</span>
+        <span class="white--text mx-4" > Operation maintenance</span>
           <v-spacer></v-spacer>
         <v-btn flat color="blue-grey darken-4">
             <span class="white--text" >My profile</span>
@@ -116,6 +116,6 @@ export default {
             drawer:false,
      links: [
                 { icon: '', text: 'View report', route: '/ViewReport'},
-                { icon: '', text:'Send Bill', route: '/SendBill'},]
+              ]
 }}}
 </script>

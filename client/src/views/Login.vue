@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <template>
 
 <v-container class=my-8>
@@ -135,4 +133,3 @@ export default {
 
     
 
->>>>>>> a558992d79bb19009d300772984c5dde85bae445

@@ -41,7 +41,7 @@ const router = new VueRouter({
 
   routes:[
     {path:'/',component:Home},
-    {path:'/CreateAcccount',component:CreateAccount},
+    {path:'/CreateAccount',component:CreateAccount},
       {path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
        {path:'/Customer',component:Customer},

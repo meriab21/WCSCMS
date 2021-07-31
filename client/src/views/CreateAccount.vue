@@ -53,21 +53,6 @@
       </v-navigation-drawer>
     </nav>
 
-<<<<<<< HEAD
-        <v-list-item-content>
-           <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
-        </v-list-item-content>
-<<<<<<< HEAD
-          
-=======
-           
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
-    </v-list-item>
-    </v-list>
-    
-</v-navigation-drawer>
-</nav>
-=======
     <v-card color="basil">
       <v-card-title class="text-center justify-center py-4">
         <h1 class="font-weight-bold text-h4 basil--text">
@@ -82,7 +67,6 @@
           <v-icon left>mdi-account</v-icon>
           Create Customer account
         </v-tab>
->>>>>>> a558992d79bb19009d300772984c5dde85bae445
 
         <v-tab>
           <v-icon left>mdi-account</v-icon>
@@ -157,56 +141,6 @@
         <v-tab-item>
           <!-- second tab -->
           <v-card text>
-<<<<<<< HEAD
-         <v-form ref="form" v-model="valid" lazy-validation>
-   <v-text-field class="ma-6"
-      v-model="first_name"
-      :counter="10"
-      label="First Name"
-      required
-    ></v-text-field>
-<<<<<<< HEAD
-    
-=======
->>>>>>> ab3e00f18716e3050fd11ce4b4806b19b9efc329
-    <v-text-field class="ma-6"
-      v-model="last_name"
-      :counter="10"
-      label="Last Name"
-      required
-    ></v-text-field>
-    
-   <v-text-field class="ma-6"
-      v-model="email"
-      label="E-mail"
-      required
-    ></v-text-field>
-            
-    <v-text-field class="ma-6"
-      v-model="phone_no"
-      label="Phone number"
-      required
-    ></v-text-field>
-    <v-text-field class="ma-6"
-      v-model="address"
-      :counter="10"
-      label="Address"
-      required
-    ></v-text-field>
-     <v-select v-model="gender" :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
-    <v-text-field class="ma-6"
-      v-model="username"
-      :counter="10"
-      label="User Name"
-      required
-    ></v-text-field>
-    <v-text-field class="ma-6"
-      v-model="password"
-      :counter="10"
-      label="Password(BP number)"
-      required
-    ></v-text-field>
-=======
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field
                 class="ma-6"
@@ -229,7 +163,6 @@
                 label="Last Name"
                 required
               ></v-text-field>
->>>>>>> a558992d79bb19009d300772984c5dde85bae445
 
               <v-text-field
                 class="ma-6"
@@ -417,3 +350,4 @@ export default {
   },
 };
 </script>
+

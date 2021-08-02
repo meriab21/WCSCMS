@@ -11,6 +11,7 @@ import Admin from './views/Admin';
 import CreateAccount from './views/CreateAccount';
 import UserProfile from './views/UserProfile';
 import ForgotPassword from './views/ForgotPassword';
+import Assistant from './views/Assistant';
 Vue.use(VueRouter)
 
 import './SCSS/main.SCSS';
@@ -23,20 +24,23 @@ Vue.component('Login', Login);
 Vue.component('Customer', Customer);
 Vue.component('home', Home);
 Vue.component('Admin', Admin);
+Vue.component('UserProfile', UserProfile);
+
 
 
 
 const router = new VueRouter({
   mode:'history',
       routes:[
-            {path:'/',component:Home},
+              {path:'/',component:Home},
               {path:'/Noncustomer',component:Noncustomer},
-            {path:'/Login',component:Login},
+              {path:'/Login',component:Login},
               {path:'/Customer',component:Customer},
               {path:'/Admin',component:Admin},
               {path:'/create-account',component:CreateAccount},
               {path:'/user-profile',component:UserProfile},
               {path:'/Forgot-password',component:ForgotPassword},
+              {path:'/Assistant',component:Assistant},
       ]
  })
  Vue.use(vuetify);

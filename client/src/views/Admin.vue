@@ -8,10 +8,13 @@
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
+
+         <router-link to="/user-profile" tag="v-btn">
         <v-btn flat color="blue-grey darken-4">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
+         </router-link>
         <v-btn flat color="blue-grey darken-4">
           <span class="white--text">Notification</span>
           <v-icon right color="white">circle_notifications</v-icon>
@@ -31,7 +34,7 @@
         class="blue-grey lighten-5"
       >
 
-          <p class="display-2 mx-4 subheading grey--text">WCSCMS</p> -->
+          <p class="display-2 mx-4 subheading grey--text">CSCMS</p> 
 
             <v-list>
             <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
@@ -116,9 +119,11 @@
                     <v-chip
                       small
                       :class="`${info.status} white--text caption ma-6`"
+                      color="red"
                       >{{ info.status }}</v-chip
                     >
                   </div>
+                  
                 </v-flex>
               </v-layout>
             </v-card>

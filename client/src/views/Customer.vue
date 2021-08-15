@@ -83,6 +83,14 @@
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
     </router-link>
+    <router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn icon color="white">
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+</router-link>
     </v-toolbar>
      <v-spacer></v-spacer> 
     

@@ -2,7 +2,16 @@
    
 <div class="block">
      <v-container>
+                <router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn  icon color="black" >
+        <v-icon >mdi-home</v-icon>
+      </v-btn>
+</router-link> 
          <h2 class="text-center">Our Teams</h2>
+      
          <v-row>
              <v-col v-for="item in items" :key="item.id" cols="4">
          <v-card class="mx-auto" max-width="400">

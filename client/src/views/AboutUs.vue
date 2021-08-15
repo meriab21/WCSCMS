@@ -2,6 +2,14 @@
 <v-content>
     <div class="staticHero">
         <v-img src="../assets/images/ab.png" > 
+            <router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn  icon color="black" >
+        <v-icon >mdi-home</v-icon>
+      </v-btn>
+</router-link> 
         <v-row align="end" class="lightbox white--text pa-2 fill-height">
 <v-col>
     <v-container>

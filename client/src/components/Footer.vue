@@ -41,7 +41,7 @@ links: [
   {text:'Home',route :'/'},    
 {text:'About Us',route :'/AboutUs'},
 {text:'Team',route :'/Team'},
-{text:'Contact Us',route :'ContactUs/'},
+{text:'Contact Us',route :'/ContactUs'},
 
       
       ],

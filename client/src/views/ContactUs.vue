@@ -1,8 +1,18 @@
 <template>
     <v-content>
          <div class="staticHero">
-        <v-img src="../assets/images/c4.png" > 
+        <v-img src="../assets/images/c4.png" >
+       
+               <router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn  icon color="black" >
+        <v-icon >mdi-home</v-icon>
+      </v-btn>
+</router-link> 
         <v-row align="end" class="lightbox white--text pa-2 fill-height">
+   
 <v-col>
     <v-container>
  <div class="headline">Contact Us</div>

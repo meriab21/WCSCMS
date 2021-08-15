@@ -1,179 +1,131 @@
 <template>
-<nav>
+  <nav>
     <v-app>
-        <v-navigation-drawer absolute temporary v-model="drawer" app class="blue-grey darken-4"> 
-         <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
-
-    <v-list>
-    <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
-
-    <v-list-item-action>
-        <v-icon class="mx-4">{{link.icon}}</v-icon>
-    </v-list-item-action>
-
-        <v-list-item-content>
-           <v-list-item-title class="white--text">{{link.text}}</v-list-item-title>
-        </v-list-item-content>
-         
-    </v-list-item>
-    </v-list>    
-        </v-navigation-drawer>
-        <v-app-bar flat  app class="blue-grey darken-4"  >
-            <v-app-bar-nav  @click="drawer=!drawer"></v-app-bar-nav>
-         
-              <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
-            <span class="font-weight-light white--text"> </span>
-        <span class="white--text mx-4" > Assistant</span>
-          <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
-            <span class="white--text" >My profile</span>
-            <v-icon right color="white">mdi-account</v-icon>
-        </v-btn>
-      
-    <router-link
-        to="/"
-        tag="v-btn"
+      <v-navigation-drawer
+        absolute
+        temporary
+        v-model="drawer"
+        app
+        class="blue-grey darken-4"
       >
-        <v-btn flat color="blue-grey darken-4">
-            <span class="white--text" >Log out</span>
-            <v-icon right color="white">exit_to_app</v-icon>
-        </v-btn>
-    </router-link>
-     
-        </v-app-bar>
-      <v-spacer></v-spacer>
-    <v-col cols="12" >
-        <v-card color="#23262D"
-        >
-        <v-app-bar flat>
-<v-toolbar-title class="grey-text-title">Complains</v-toolbar-title>
+        <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
+
+        <v-list>
+          <v-list-item
+            v-for="link in links"
+            :key="link.text"
+            router
+            :to="link.route"
+          >
+            <v-list-item-action>
+              <v-icon class="mx-4">{{ link.icon }}</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <v-list-item-title class="white--text">{{
+                link.text
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-app-bar flat app class="blue-grey darken-4">
+        <v-app-bar-nav @click="drawer = !drawer"></v-app-bar-nav>
+
+        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
+        <span class="font-weight-light white--text"> </span>
+        <span class="white--text mx-4"> Assistant</span>
+
         <v-spacer></v-spacer>
-        <v-chip class="ma-2" color="grey darke-1" pill>
-            Today
-            <v-icon right small color="cyan">
-            mdi-expand-more
-            </v-icon>
-        </v-chip>
-            </v-app-bar>
-            <v-data-table :headers="headers" :items="desserts"  item-key="name" class="dattab"
-            >
-            <template v-slot:item.gultenfree="{item}">
+        <v-btn flat color="blue-grey darken-4">
+          <span class="white--text">My profile</span>
+          <v-icon right color="white">mdi-account</v-icon>
+        </v-btn>
 
-            <v-simple-checkbox v-model ="item.gultenfree" color="cyan"></v-simple-checkbox>
-            </template>
-            <template v-slot:item.action="">
-                <v-icon small>mdi-pencil</v-icon>
-            </template>
-            </v-data-table>
-            </v-card>
-
-    </v-col>
-   
+        <router-link to="/" tag="v-btn">
+          <v-btn flat color="blue-grey darken-4">
+            <span class="white--text">Log out</span>
+            <v-icon right color="white">exit_to_app</v-icon>
+          </v-btn>
+        </router-link>
+      </v-app-bar>
+      <v-spacer></v-spacer>
+      <v-container fluid>
+        <v-card class="ma-15">
+          <v-card-title>
+            Customer Complaints
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-card-title>
+          <v-data-table
+            :headers="headers"
+            :items="complaints"
+            :search="search"
+          ></v-data-table>
+        </v-card>
+      </v-container>
     </v-app>
-    </nav>
+  </nav>
 </template>
 <script>
 export default {
-    name:'Asssitant',
-      data(){
-        return{
-            drawer:false,
-     links: [
-                { icon: '', text: 'View report', route: '/ViewReport'},
-              ]
-,
-     
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          date: 159,
-          title: 24,
-         Description: 6.0,
-          status: 4.0,
-         
-        },
-        {
-          name: 'Ice cream sandwich',
-          date: 159,
-          title: 24,
-         Description: 6.0,
-          status: 4.0,
-        },
-        {
-          name: 'Eclair',
-         date: 159,
-          title: 24,
-         Description: 6.0,
-          status: 4.0,
-        },
-        {
-          name: 'Cupcake',
-          date: 159,
-          title: 24,
-         Description: 6.0,
-          status: 4.0,
-        },
-        {
-          name: 'Gingerbread',
-         date: 159,
-          title: 24,
-         Description: 6.0,
-          status: 4.0,
-        },
-        // {
-        //   name: 'Jelly bean',
-        //   calories: 375,
-        //   fat: 0.0,
-        //   carbs: 94,
-        //   protein: 0.0,
-        //   iron: '0%',
-        // },
-        // {
-        //   name: 'Lollipop',
-        //   calories: 392,
-        //   fat: 0.2,
-        //   carbs: 98,
-        //   protein: 0,
-        //   iron: '2%',
-        // },
-        // {
-        //   name: 'Honeycomb',
-        //   calories: 408,
-        //   fat: 3.2,
-        //   carbs: 87,
-        //   protein: 6.5,
-        //   iron: '45%',
-        // },
-        // {
-        //   name: 'Donut',
-        //   calories: 452,
-        //   fat: 25.0,
-        //   carbs: 51,
-        //   protein: 4.9,
-        //   iron: '22%',
-        // },
-        // {
-        //   name: 'KitKat',
-        //   calories: 518,
-        //   fat: 26.0,
-        //   carbs: 65,
-        //   protein: 7,
-        //   iron: '6%',
-        // },
-      ],
+  name: "Asssitant",
+  data() {
+    return {
+      drawer: false,
+      links: [{ icon: "", text: "View report", route: "/ViewReport" }],
+      search: "",
       headers: [
         {
-          text: 'List',
-          align: 'start',
+          text: "Customer",
+          align: "start",
           sortable: false,
-          value: 'name',
+          value: "name",
         },
-        { text: 'Date', value: 'date' },
-        { text: 'Title', value: 'title' },
-        { text: 'Description (g)', value: 'Description' },
-        { text: 'Status', value: 'status' },
-        { text: 'Iron (%)', value: 'iron' },
+        { text: "Complaint", value: "complaint" },
+        { text: "Description", value: "description" },
+        { text: "Address", value: "address" },
+        { text: "Date", value: "date" },
+        { text: "Status", value: "status" },
       ],
-    
-        }}}
+      complaints: [
+        {
+          name: "Mekdes Demoze",
+          complaint: "Power Outage",
+          description: "3 days power outage",
+          address: "Adama Kebele 04",
+          date: "jun/2/2021",
+          status: "Urgent",
+        },
+        {
+          name: "Biniam Chekol",
+          complaint: "over charge on bill",
+          description: "13000 birr charge for one month",
+          address: "Adama Kebele 06",
+          date: "jun/14/2021",
+          status: "Urgent",
+        },
+        {
+          name: "Melat kebede",
+        },
+        {
+          name: "Kalkidan Addisu",
+        },
+        {
+          name: "Meron Abate",
+        },
+        {
+          name: "Abebe kebede",
+        },
+      ],
+    };
+  },
+};
 </script>

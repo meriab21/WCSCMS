@@ -5,8 +5,6 @@ import VueRouter from 'vue-router'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
 
-
-
 import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
 import Login from './views/Login';
@@ -20,6 +18,8 @@ import SendBill from './views/SendBill';
 import OperationMaintenance from './views/OperationMaintenance';
 import Assistant from './views/Assistant';
 import ContactUs from './views/ContactUs';
+import UserProfile from './views/UserProfile';
+import ForgotPassword from './views/ForgotPassword';
 
 Vue.use(VueRouter)
 
@@ -33,6 +33,8 @@ Vue.component('Login', Login);
 Vue.component('Customer', Customer);
 Vue.component('home', Home);
 Vue.component('Admin', Admin);
+Vue.component('UserProfile', UserProfile);
+
 
 
 
@@ -53,7 +55,10 @@ const router = new VueRouter({
        {path:'/SendBill',component:SendBill},
        {path:'/OperationMaintenance',component:OperationMaintenance},
       {path:'/AboutUs',component:AboutUs},
-   ]
+              {path:'/user-profile',component:UserProfile},
+              {path:'/Forgot-password',component:ForgotPassword},
+            
+      ]
  })
  Vue.use(vuetify);
 

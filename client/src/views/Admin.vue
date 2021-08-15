@@ -1,5 +1,5 @@
 <template>
-<v-container>
+  <v-container>
     <nav>
       <v-toolbar flat color="blue-grey darken-4" app>
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
@@ -8,7 +8,7 @@
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn flat color="blue-grey darken-4" router to="/user-profile">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
@@ -30,108 +30,112 @@
         v-model="drawer"
         class="blue-grey lighten-5"
       >
+        <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
 
-          <p class="display-2 mx-4 subheading grey--text">WCSCMS</p> -->
-
-            <v-list>
-            <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
-
+        <v-list>
+          <v-list-item
+            v-for="link in links"
+            :key="link.text"
+            router
+            :to="link.route"
+          >
             <v-list-item-action>
-                <v-icon class="mx-4">{{link.icon}}</v-icon>
+              <v-icon class="mx-4">{{ link.icon }}</v-icon>
             </v-list-item-action>
 
-                <v-list-item-content>
-                  <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            </v-list> 
+            <v-list-item-content>
+              <v-list-item-title class="dark--text">{{
+                link.text
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-navigation-drawer>
     </nav>
 
-  <v-container fluid>
-    <v-row justify="center">
-      <v-subheader>List of Accounts</v-subheader>
+    <v-container fluid>
+      <v-row justify="center">
+        <v-subheader>List of Accounts</v-subheader>
 
-      <v-expansion-panels popout>
-        <v-expansion-panel
-          v-for="(message, i) in messages"
-          :key="i"
-          hide-actions
-        >
-          <v-expansion-panel-header>
-            <v-row align="center" class=" spacer" no-gutters>
-              <v-col cols="4" sm="2" md="1">
-                <v-avatar size="36px">
-                  <img
-                    v-if="message.avatar"
-                    alt="Avatar"
-                    src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
-                  />
-                  <v-icon
-                    v-else
-                    :color="message.color"
-                    v-text="message.icon"
-                  ></v-icon>
-                </v-avatar>
-              </v-col>
+        <v-expansion-panels popout>
+          <v-expansion-panel
+            v-for="(message, i) in messages"
+            :key="i"
+            hide-actions
+          >
+            <v-expansion-panel-header>
+              <v-row align="center" class=" spacer" no-gutters>
+                <v-col cols="4" sm="2" md="1">
+                  <v-avatar size="36px">
+                    <img
+                      v-if="message.avatar"
+                      alt="Avatar"
+                      src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                    />
+                    <v-icon
+                      v-else
+                      :color="message.color"
+                      v-text="message.icon"
+                    ></v-icon>
+                  </v-avatar>
+                </v-col>
 
-              <v-col class="hidden-xs-only" sm="5" md="3">
-                <strong v-html="message.name"></strong>
-                <span v-if="message.total" class="grey--text">
-                  &nbsp;({{ message.total }})
-                </span>
-              </v-col>
+                <v-col class="hidden-xs-only" sm="5" md="3">
+                  <strong v-html="message.name"></strong>
+                  <span v-if="message.total" class="grey--text">
+                    &nbsp;({{ message.total }})
+                  </span>
+                </v-col>
 
-              <v-col class="text-no-wrap" cols="5" sm="3">
-                <v-chip
-                  v-if="message.new"
-                  :color="`${message.color} lighten-4`"
-                  class="ml-0 mr-2 black--text"
-                  label
-                  small
-                >
-                  {{ message.new }} new
-                </v-chip>
-                <strong v-html="message.title"></strong>
-              </v-col>
-            </v-row>
-          </v-expansion-panel-header>
+                <v-col class="text-no-wrap" cols="5" sm="3">
+                  <v-chip
+                    v-if="message.new"
+                    :color="`${message.color} lighten-4`"
+                    class="ml-0 mr-2 black--text"
+                    label
+                    small
+                  >
+                    {{ message.new }} new
+                  </v-chip>
+                  <strong v-html="message.title"></strong>
+                </v-col>
+              </v-row>
+            </v-expansion-panel-header>
 
-          <v-expansion-panel-content>
-            <v-divider></v-divider>
+            <v-expansion-panel-content>
+              <v-divider></v-divider>
 
-            <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
-              <v-layout row warp>
-                <v-flex xs12 md6>
-                  <div class="caption grey--text ">Name</div>
-                  <div class="my-2">{{ info.title }}</div>
-                </v-flex>
-                <v-flex xs6 sm4 md2>
-                  <div class="caption grey--text ">Date</div>
-                  <div class="my-2">{{ info.date }}</div>
-                </v-flex>
-                <v-flex xs6 sm4 md2>
-                  <div>
-                    <v-chip
-                      small
-                      :class="`${info.status} white--text caption ma-6`"
-                      >{{ info.status }}</v-chip
-                    >
-                  </div>
-                </v-flex>
-              </v-layout>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </v-row>
+              <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
+                <v-layout row warp>
+                  <v-flex xs12 md6>
+                    <div class="caption grey--text ">Name</div>
+                    <div class="my-2">{{ info.title }}</div>
+                  </v-flex>
+                  <v-flex xs6 sm4 md2>
+                    <div class="caption grey--text ">Date</div>
+                    <div class="my-2">{{ info.date }}</div>
+                  </v-flex>
+                  <v-flex xs6 sm4 md2>
+                    <div>
+                      <v-chip
+                        small
+                        :class="`${info.status} white--text caption ma-6`"
+                        >{{ info.status }}</v-chip
+                      >
+                    </div>
+                  </v-flex>
+                </v-layout>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-row>
+    </v-container>
   </v-container>
-
-</v-container>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   data() {
     return {
@@ -141,7 +145,7 @@ export default {
         {
           icon: "person_add",
           text: "Create Account",
-          route: "/create-account",
+          route: "/createaccount",
         },
         // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
       ],

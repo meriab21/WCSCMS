@@ -24,10 +24,6 @@
 </router-link>
     </v-toolbar>
   </div>
-  
- 
-        
-    
     <v-text-field
       v-model="Fname"
       :counter="10"

@@ -28,30 +28,31 @@
       v-model="Fname"
       :counter="10"
       :rules="FnameRules"
-      label="Fisrt Name"
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="Lname"
-      :counter="10"
-      :rules="LnameRules"
-      label="Last Name"
+      label=" First Name"
       required
     ></v-text-field>
      <v-text-field
-      v-model="phone_no"
-      :rules="phone_noRules"
+      v-model="Lname"
+      :counter="10"
+      :rules="LnameRules"
+      label=" Last Name"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+     <v-text-field
+      v-model="phoneNumber"
+      :rules="phoneNumberRules"
       
       label="Phone number"
       required
     ></v-text-field>
-   <v-text-field
-      v-model="location"
-      :counter="10"
-      :rules="nameRules"
-      label="location"
-      required
-    ></v-text-field>
+
     <v-select
       v-model="select"
       :items="items"
@@ -59,14 +60,13 @@
       label="Case"
       required
     ></v-select>
-    
- 
     <v-textarea
-      v-model="description"
       clearable
       clear-icon="mdi-close-circle"
-     lable="Please fill your report here"
+     value="Please fill your report here"
     ></v-textarea>
+
+   
 
     <v-btn
       :disabled="!valid"
@@ -86,28 +86,24 @@
 <script>
 
 export default {
-    name:"app",
+    name:"Noncustomer",
     data: () => ({
-      valid: true,
+      // valid: true,
       Fname: '',
       FnameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
-      Lname: '',
-      FnameRules: [
+        Lname: '',
+      LnameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
-      
-       phone_no: '',
-      phone_noRules: [
+    
+       phoneNumber: '',
+      phoneNumberRules: [
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
-      ],
-      location: '',
-      locationRules: [
-        v => !!v || 'Location is required',
       ],
       select: null,
       items: [
@@ -116,39 +112,13 @@ export default {
         'Accident',
         'Rain',
       ],
-      description:'',
      
     }),
 
     methods: {
       validate () {
-        if (this.$refs.form.validate()){
-        return axios({
-        method: 'post',
-          data: {
-            Fname: this.Fname,
-            Lname: this.Lname,
-            phone_no: this.phone_no,
-            location: this.location,
-            select: this.select,
-            description: this.description,
+        this.$refs.form.validate()
       },
-   url: 'http://localhost:3000/controllers/emergencys',
-    headers: {
-       'Content-Type': 'application/json',
-      },
-    })
-   .then(() => {
-     this.$router.push({ path:'/',component:Home});
-     this.$refs.form.reset();
- })
-    .catch(() => {
-     });
-      }
-   return true;
- },
-      }
-      
-    }
-  
+    },
+  }
 </script>

@@ -30,7 +30,7 @@
         v-model="drawer"
         class="blue-grey lighten-5"
       >
-        <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
+        <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
         <v-list>
           <v-list-item

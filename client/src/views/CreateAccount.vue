@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <nav>
-      <v-toolbar color="blue-grey darken-4">
-        <v-icon color="white" @click="drawer = !drawer">menu_open</v-icon>
+      <v-app-bar app text color="blue-grey darken-4">
+        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4" router to="/user-profile">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
@@ -21,10 +21,16 @@
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
-      </v-toolbar>
+      </v-app-bar>
 
-      <v-navigation-drawer app v-model="drawer" class="blue-grey lighten-5">
-        <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
+      <v-navigation-drawer
+        absolute
+        temporary
+        app
+        v-model="drawer"
+        class="blue-grey lighten-5"
+      >
+        <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
 
         <v-list>
           <v-list-item
@@ -228,15 +234,7 @@ export default {
   data() {
     return {
       drawer: false,
-      links: [
-        { icon: "home", text: "Home", route: "/" },
-        {
-          icon: "person_add",
-          text: "Create Account",
-          route: "/create-account",
-        },
-        // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
-      ],
+      links: [{ icon: "home", text: "Home", route: "/" }],
       valid: true,
       first_name: "",
       // firstnameRules: [

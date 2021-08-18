@@ -8,7 +8,7 @@
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4" route to="/user-profile">
+        <v-btn text color="blue-grey darken-4" router to="/user-profile">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
@@ -53,7 +53,7 @@
       </v-navigation-drawer>
     </nav>
 
-    <v-container fluid>
+    <v-container fluid class="ma-10">
       <v-row justify="center">
         <v-subheader>List of Accounts</v-subheader>
 
@@ -105,7 +105,7 @@
             <v-expansion-panel-content>
               <v-divider></v-divider>
 
-              <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
+              <v-card text class="pa-3" v-for="info in infos" :key="info.title">
                 <v-layout row warp>
                   <v-flex xs12 md6>
                     <div class="caption grey--text ">Name</div>

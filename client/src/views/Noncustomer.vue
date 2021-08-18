@@ -14,20 +14,58 @@
         </v-toolbar>
       </div>
 
-      <v-text-field
-        v-model="Fname"
-        :counter="10"
-        :rules="FnameRules"
-        label=" First Name"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="Lname"
-        :counter="10"
-        :rules="LnameRules"
-        label=" Last Name"
-        required
-      ></v-text-field>
+      <v-spacer></v-spacer>
+<router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn icon color="white">
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+</router-link>
+    </v-toolbar>
+  </div>
+    <v-text-field
+      v-model="Fname"
+      :counter="10"
+      :rules="FnameRules"
+      label=" First Name"
+      required
+    ></v-text-field>
+     <v-text-field
+      v-model="Lname"
+      :counter="10"
+      :rules="LnameRules"
+      label=" Last Name"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+     <v-text-field
+      v-model="phoneNumber"
+      :rules="phoneNumberRules"
+      
+      label="Phone number"
+      required
+    ></v-text-field>
+
+    <v-select
+      v-model="select"
+      :items="items"
+      :rules="[v => !!v || ' Case is required']"
+      label="Case"
+      required
+    ></v-select>
+    <v-textarea
+      clearable
+      clear-icon="mdi-close-circle"
+     value="Please fill your report here"
+    ></v-textarea>
 
       <v-text-field
         v-model="email"

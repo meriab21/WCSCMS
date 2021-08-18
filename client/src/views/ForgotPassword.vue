@@ -44,3 +44,20 @@
     
             </v-container>
 </template>
+<script>
+export default {
+    data() {
+        return{
+            
+        }
+        
+    },
+   methods:{
+       show() {
+
+       }
+   }
+        
+    
+}
+</script>

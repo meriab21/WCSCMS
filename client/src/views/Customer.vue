@@ -1,7 +1,8 @@
+Kalye Class, [17.08.21 05:51]
 <template>
 <v-container>
 <nav> 
-    <v-toolbar  flat color="blue-grey darken-4" app>
+    <v-toolbar  text color="blue-grey darken-4" app>
       
        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
@@ -10,11 +11,11 @@
 
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >My profile</span>
             <v-icon right color="white">mdi-account</v-icon>
         </v-btn>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           
   <v-menu offset-y>
       <template v-slot:activator="{ on, attrs }">
@@ -40,7 +41,7 @@
     </v-toolbar>
 
     <v-list three-line>
-      <template v-for="(not, index) in nots">
+      <!-- <template v-for="(not, index) in nots">
         <v-subheader
           v-if="not.header"
           :key="not.header"
@@ -66,7 +67,7 @@
             <v-list-item-subtitle v-html="not.subtitle"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-      </template>
+      </template> -->
     </v-list>
   </v-card>
     </v-menu>
@@ -78,7 +79,7 @@
         to="/"
         tag="v-btn"
       >
-        <v-btn flat color="blue-grey darken-4" >
+        <v-btn text color="blue-grey darken-4" >
             <span class="white--text"  >Log out</span>
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -94,76 +95,53 @@
     </v-toolbar>
      <v-spacer></v-spacer> 
     
-    <v-menu
-      v-model="fromDateMenu"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      lazy
-      transition="scale-transition"
-      offset-y
-      full-width
-      max-width="290px"
-      min-width="290px"
-    >
-      <template v-slot:activator="{ on }">
-        <v-text-field
-          label="Date"
-           :rules="[v => !!v || ' Date is required']"
-          readonly
-          :value="fromDateDisp"
-          v-on="on"
-        ></v-text-field>
-      </template>
-      <v-date-picker
-        locale="en-in"
-     
-        v-model="fromDateVal"
-        no-title
-        @input="fromDateMenu = false"
-      ></v-date-picker>
-    </v-menu>
-  
+    <v-col cols="6">
+    <v-text-field
+      v-model="date"
+      label="Date"
+      class="purple-input"
+      type="Date"/>
+                </v-col>
 
     <v-text-field
+     v-model="username"
+      :rules="[v => !!v || ' Address is required']"
+      label="Username"
+      required
+    ></v-text-field>
+     <v-text-field
      v-model="address"
       :rules="[v => !!v || ' Address is required']"
       label="Address"
       required
     ></v-text-field>
-     
-  
+  <v-text-field
+     v-model="phone_no"
+      :rules="[v => !!v || ' Phone number is required']"
+      label="Phone number"
+      required
+    ></v-text-field>
 
     <v-select
       v-model="select"
       :items="items"
       :rules="[v => !!v || ' Title is required']"
-      label="Title"
+      label="Case"
       required
     ></v-select>
-    <v-textarea
-      clearable
-      clear-icon="mdi-close-circle"
-      :rules="[v => !!v || ' Description is required']"
-     value="Description"
-     required
-    ></v-textarea>
-
-   
-
+    
     <v-btn
-      :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
-    >
-      Send
-      
+      @click="register"
+      :disabled="!valid">Send  
     </v-btn>
 
 <v-navigation-drawer absolute temporary app v-model="drawer" class="blue-grey darken-4" >
     <p class="display-2  mx-4 subheading grey--text">CSCMS</p>
 
-   
+
+
       <v-dialog
       v-model="dialog"
       width="500"
@@ -252,75 +230,65 @@
 
 <script>
 
+import axios from "axios";
 export default {
   
     data() {
       
         return {
-           fromDateVal: null,
-  dialog: false,
-            drawer: false,
-            // links: [
-            //     { icon: '', text: 'View status', route: '/ViewStatus'},
             
-            //     ] 
+            dialog: false,
+            drawer: false,
+            
              valid: true,
       date: '',
-      dateRules: [
-        v => !!v || 'Date is required',
-        v => /.+@.+\..+/.test(v) || 'Date must be valid',
-      ],
-      Address: '',
-      AddressRules: [
-        v => !!v || 'Address is required',
-       v => /.+@.+\..+/.test(v) || 'Address must be valid',
-      ],
-    select: null,
+      username:'',
+      address: '',
+      phone_no:'',
+      select: null,
       items: [
         'Emergency',
-        'Inspection',
-        'New connection',
-        'Relocation',
+        'Corruption',
+        'Meter',
+        'Bill Unavailable',
+        'New Connection Delay',
+        'Relocation Delay',
+        'Manintenance Problem',
+        'Unsatisfaied by Service',
+        'Unqualified Employee',
       ],
-     nots: [
-        { header: 'Today' },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Brunch this weekend?',
-          subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-          subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-          title: 'Birthday gift',
-          subtitle: '<span class="text--primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-          title: 'Recipe to try',
-          subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-        },
-      ],
-
+      
+    
+    }
+    },
     methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
-    },}}
-         ,computed: {
-      fromDateDisp() {
-        return this.fromDateVal;   }}}
+      register(){
+        let newComplaint ={
+          date: this.date,
+          username: this.username,
+          address: this.address,
+          phone_no: this.phone_no,
+          select: this.select,
+          
+        }; 
+      axios
+        .post("http://localhost:3000/complaints", newComplaint)
+        .then(() => {
+          //this.$router.push({ path: "/" });
+          this.$refs.form.reset();
+
+
+          this.get('/complaints', (req,res)=>{
+            res.render('/')
+          })
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      //} // VALIDATION END
+      return true;
+    },
+    },
+       }
 </script>

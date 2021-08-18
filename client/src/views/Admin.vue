@@ -1,27 +1,27 @@
 <template>
 <v-container>
     <nav>
-      <v-toolbar flat color="blue-grey darken-4" app>
+      <v-app-bar app text color="blue-grey darken-4" >
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn flat color="blue-grey darken-4" route to="/user-profile">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>
           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
 
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
-      </v-toolbar>
+      </v-app-bar>
 
       <v-navigation-drawer
         absolute
@@ -43,7 +43,6 @@
                 <v-list-item-content>
                   <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
                 </v-list-item-content>
-                  </v-list-item-title>
             </v-list-item>
             </v-list> 
       </v-navigation-drawer>
@@ -101,7 +100,7 @@
           <v-expansion-panel-content>
             <v-divider></v-divider>
 
-            <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
+            <v-card text class="pa-3" v-for="info in infos" :key="info.title">
               <v-layout row warp>
                 <v-flex xs12 md6>
                   <div class="caption grey--text ">Name</div>
@@ -142,7 +141,7 @@ export default {
         {
           icon: "person_add",
           text: "Create Account",
-          route: "/create-account",
+          route: "/createaccount",
         },
         // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
       ],

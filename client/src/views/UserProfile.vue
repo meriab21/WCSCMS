@@ -92,11 +92,7 @@
                 </v-col>
 
                 <v-col cols="12" md="4">
-                  <v-text-field
-                    color="purple"
-                    label="Postal Code"
-                    type="number"
-                  />
+                  <v-text-field color="purple" label="Branch" />
                 </v-col>
 
                 <v-col cols="12">
@@ -120,13 +116,14 @@
 
       <v-col cols="12" md="4">
         <app-card class="mt-4 text-center">
-          <v-img
-            class="rounded-circle elevation-6 mt-n12 d-inline-block"
-            src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
-            width="128"
-          />
-
           <v-card-text class="text-center">
+            <v-avatar size="100">
+              <v-img
+                class="rounded-circle "
+                src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
+                width="128"
+              />
+            </v-avatar>
             <h6 class="text-h6 mb-2 text--secondary">
               Admin
             </h6>

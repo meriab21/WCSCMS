@@ -29,13 +29,13 @@
     <v-form
       ref="form"
       v-model="form"
-      class="pa-4 pt-6"
+      class="pa-6 pt-8"
     >
      <v-text-field
         v-model="username"
         filled
         color="deep-purple"
-        label="username"
+        label="Username"
       ></v-text-field>
       <v-text-field
         v-model="password"

@@ -1,27 +1,294 @@
-
+Kalye Class, [17.08.21 05:51]
 <template>
-  <v-app >
-    <v-navigation-drawer
-      v-model="drawer"
-      app color="grey darken-4"
+<v-container>
+<nav> 
+    <v-toolbar  text color="blue-grey darken-4" app>
+      
+       <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
+        <v-toolbar-title class="text-uppercase grey--text">
+        <span class="font-weight-light white--text"> </span>
+        <span class="white--text mx-4" > Customer</span>
+
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn text color="blue-grey darken-4">
+            <span class="white--text" >My profile</span>
+            <v-icon right color="white">mdi-account</v-icon>
+        </v-btn>
+        <v-btn text color="blue-grey darken-4">
+          
+  <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <span class="white--text" 
+          v-bind="attrs"
+          v-on="on">Notification</span>
+    
+      </template>
+        <v-card
+    max-width="450"
+    class="mx-auto"
+  >
+    <v-toolbar color="blue-grey darken-4" >
+      <v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
+
+      <v-toolbar-title class="white--text">Notification</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon color="white">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <v-list three-line>
+      <!-- <template v-for="(not, index) in nots">
+        <v-subheader
+          v-if="not.header"
+          :key="not.header"
+          v-text="not.header"
+        ></v-subheader>
+
+        <v-divider
+          v-else-if="not.divider"
+          :key="index"
+          :inset="not.inset"
+        ></v-divider>
+
+        <v-list-item
+          v-else
+          :key="not.title"
+        >
+          <v-list-item-avatar>
+            <v-img :src="not.avatar"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title v-html="not.title"></v-list-item-title>
+            <v-list-item-subtitle v-html="not.subtitle"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template> -->
+    </v-list>
+  </v-card>
+    </v-menu>
+            
+            <v-icon right color="white">circle_notifications</v-icon>
+            
+        </v-btn>
+    <router-link
+        to="/"
+        tag="v-btn"
+      >
+        <v-btn text color="blue-grey darken-4" >
+            <span class="white--text"  >Log out</span>
+            <v-icon right color="white">exit_to_app</v-icon>
+        </v-btn>
+    </router-link>
+    <router-link
+        to="/"
+        tag="v-btn"
+      >
+      <v-btn icon color="white">
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+</router-link>
+    </v-toolbar>
+     <v-spacer></v-spacer> 
+    
+    <v-col cols="6">
+    <v-text-field
+      v-model="date"
+      label="Date"
+      class="purple-input"
+      type="Date"/>
+                </v-col>
+
+    <v-text-field
+     v-model="username"
+      :rules="[v => !!v || ' Address is required']"
+      label="Username"
+      required
+    ></v-text-field>
+     <v-text-field
+     v-model="address"
+      :rules="[v => !!v || ' Address is required']"
+      label="Address"
+      required
+    ></v-text-field>
+  <v-text-field
+     v-model="phone_no"
+      :rules="[v => !!v || ' Phone number is required']"
+      label="Phone number"
+      required
+    ></v-text-field>
+
+    <v-select
+      v-model="select"
+      :items="items"
+      :rules="[v => !!v || ' Title is required']"
+      label="Case"
+      required
+    ></v-select>
+    
+    <v-btn
+      color="success"
+      class="mr-4"
+      @click="register"
+      :disabled="!valid">Send  
+    </v-btn>
+
+<v-navigation-drawer absolute temporary app v-model="drawer" class="blue-grey darken-4" >
+    <p class="display-2  mx-4 subheading grey--text">CSCMS</p>
+
+
+
+      <v-dialog
+      v-model="dialog"
+      width="500"
     >
-      <!--  -->
-    </v-navigation-drawer>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn text  class="mx-14" 
+       color="white"
+          v-bind="attrs"
+          v-on="on"
+        >
+          View Status
+        </v-btn>
+      </template>
 
-    <v-app-bar app color="grey darken-4">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Privacy Policy
+        </v-card-title>
 
-      <v-toolbar-title  class="white--text">CSCMS</v-toolbar-title>
-    </v-app-bar>
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
 
-    <v-content>
-      <!--  -->
-    </v-content>
-  </v-app>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn text class="mx-14"
+        color="white"
+          v-bind="attrs"
+          v-on="on"
+        >
+          View Bill
+        </v-btn>
+      </template>
+
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Privacy Policy
+        </v-card-title>
+
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    
+</v-navigation-drawer>
+
+
+
+
+</nav>
+</v-container>
+
 </template>
 
+
 <script>
-  export default {
-    data: () => ({ drawer: null }),
-  }
+
+import axios from "axios";
+export default {
+  
+    data() {
+      
+        return {
+            
+            dialog: false,
+            drawer: false,
+            
+             valid: true,
+      date: '',
+      username:'',
+      address: '',
+      phone_no:'',
+      select: null,
+      items: [
+        'Emergency',
+        'Corruption',
+        'Meter',
+        'Bill Unavailable',
+        'New Connection Delay',
+        'Relocation Delay',
+        'Manintenance Problem',
+        'Unsatisfaied by Service',
+        'Unqualified Employee',
+      ],
+      
+    
+    }
+    },
+    methods: {
+      register(){
+        let newComplaint ={
+          date: this.date,
+          username: this.username,
+          address: this.address,
+          phone_no: this.phone_no,
+          select: this.select,
+          
+        }; 
+      axios
+        .post("http://localhost:3000/complaints", newComplaint)
+        .then(() => {
+          //this.$router.push({ path: "/" });
+          this.$refs.form.reset();
+
+
+          this.get('/complaints', (req,res)=>{
+            res.render('/')
+          })
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      //} // VALIDATION END
+      return true;
+    },
+    },
+       }
 </script>

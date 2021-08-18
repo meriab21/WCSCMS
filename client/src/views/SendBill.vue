@@ -42,9 +42,7 @@
       color="success"
       class="mr-4"
       @click="send"
-    >
-      Send
-      
+    > Send  
     </v-btn>
 
       </v-card>
@@ -88,7 +86,7 @@ export default {
           this.$refs.form.reset();
 
 
-          this.get('/bills', (req,res)=>{
+          this.get('/bils', (req,res)=>{
             res.render('/')
           })
           

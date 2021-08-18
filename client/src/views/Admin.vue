@@ -8,11 +8,7 @@
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-<<<<<<< HEAD
-        <v-btn text color="blue-grey darken-4">
-=======
         <v-btn flat color="blue-grey darken-4" route to="/user-profile">
->>>>>>> featureA
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>

@@ -30,7 +30,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-app-bar flat app class="blue-grey darken-4">
+      <v-app-bar text app class="blue-grey darken-4">
         <v-app-bar-nav @click="drawer = !drawer"></v-app-bar-nav>
 
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
@@ -38,17 +38,21 @@
         <span class="white--text mx-4"> Assistant</span>
 
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           <span class="white--text">My profile</span>
           <v-icon right color="white">mdi-account</v-icon>
         </v-btn>
 
-        <router-link to="/" tag="v-btn">
+        <v-btn text color="blue-grey darken-4" route to="/">
+          <span class="white--text">Log out</span>
+          <v-icon right color="white">exit_to_app</v-icon>
+        </v-btn>
+        <!-- <router-link to="/" tag="v-btn">
           <v-btn flat color="blue-grey darken-4">
             <span class="white--text">Log out</span>
             <v-icon right color="white">exit_to_app</v-icon>
           </v-btn>
-        </router-link>
+        </router-link> -->
       </v-app-bar>
       <v-spacer></v-spacer>
       <v-container fluid>
@@ -81,6 +85,7 @@ export default {
     return {
       drawer: false,
       links: [{ icon: "", text: "View report", route: "/ViewReport" }],
+      links: [{ icon: "", text: "View report", route: "/ViewComplaint" }],
       search: "",
       headers: [
         {

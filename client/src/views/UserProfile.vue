@@ -1,27 +1,27 @@
 <template>
   <v-container id="user-profile-view" fluid tag="section">
     <nav>
-      <v-toolbar flat color="blue-grey darken-4" app>
+      <v-app-bar app text color="blue-grey darken-4">
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
           <span class="white--text mx-4"> Admin</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4" route to="/user-profile">
           <span class="white--text">My Account</span>
           <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>
           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
 
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
-      </v-toolbar>
+      </v-app-bar>
 
       <v-navigation-drawer
         absolute
@@ -139,5 +139,20 @@
 </template>
 
 <script>
-export default { name: "UserProfileView" };
+export default {
+  name: "UserProfileView",
+  data() {
+    return {
+      drawer: false,
+      links: [
+        { icon: "home", text: "Home", route: "/" },
+        {
+          icon: "person_add",
+          text: "Create Account",
+          route: "/createaccount",
+        },
+      ],
+    };
+  },
+};
 </script>

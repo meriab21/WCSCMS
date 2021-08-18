@@ -1,14 +1,12 @@
-Kalye Class, [17.08.21 05:51]
 <template>
 <v-container>
 <nav> 
-    <v-toolbar  text color="blue-grey darken-4" app>
+    <v-app-bar app text color="blue-grey darken-4" >
       
        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light white--text"> </span>
-        <span class="white--text mx-4" > Customer</span>
-
+          <span class="font-weight-light white--text"> </span>
+          <span class="white--text mx-4"> Customer</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text color="blue-grey darken-4">
@@ -75,24 +73,18 @@ Kalye Class, [17.08.21 05:51]
             <v-icon right color="white">circle_notifications</v-icon>
             
         </v-btn>
-    <router-link
-        to="/"
-        tag="v-btn"
-      >
-        <v-btn text color="blue-grey darken-4" >
+    
+        <v-btn text color="blue-grey darken-4" route to='/'>
             <span class="white--text"  >Log out</span>
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
-    </router-link>
-    <router-link
-        to="/"
-        tag="v-btn"
-      >
-      <v-btn icon color="white">
+    
+    
+      <v-btn icon color="white" route to="/">
         <v-icon>mdi-home</v-icon>
       </v-btn>
-</router-link>
-    </v-toolbar>
+
+    </v-app-bar>
      <v-spacer></v-spacer> 
     
     <v-col cols="6">
@@ -226,7 +218,6 @@ Kalye Class, [17.08.21 05:51]
 </v-container>
 
 </template>
-
 
 <script>
 

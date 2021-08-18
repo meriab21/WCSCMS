@@ -201,7 +201,7 @@
           <v-btn
             color="primary"
             text
-            @click="dialog = false"
+            @click="dialog1 = false"
           >
             I accept
           </v-btn>

@@ -66,7 +66,7 @@
             <v-data-table :items="customers" :headers="customer_headers">
               <template valid-slot:item.actions="{item}"> 
                <router-link >
-                 <v-icon small class="mr-2" >mdi-pencil</v-icon>
+                 <vue-icon small class="mr-2" >mdi-pencil</vue-icon>
                  </router-link> 
                 <v-icon small @click="deleteItem1(item)">mdi-delete</v-icon>
               </template>

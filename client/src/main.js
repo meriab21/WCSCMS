@@ -24,6 +24,9 @@ import Rating from './views/Rating';
 import Manager from './views/Manager';
 import Sendreport from './views/Sendreport';
 import ViewStatus from './views/ViewStatus';
+import caseworker from './views/caseworker';
+
+
 Vue.use(VueRouter)
 
 import './SCSS/main.SCSS';
@@ -63,6 +66,7 @@ const router = new VueRouter({
         {path:'/Rating',component:Rating},
         {path:'/Send-report',component:Sendreport},
         {path:'/View-status',component:ViewStatus},
+        {path:'/case-worker',component:caseworker},
             
       ]
  })

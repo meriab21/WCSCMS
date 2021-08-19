@@ -48,20 +48,27 @@
             </v-list> 
       </v-navigation-drawer>
     </nav>
+    <h1>send warning</h1>
 <v-card text class="ma-8">
  <v-form
     ref="form"
   >
  
   <v-spacer></v-spacer>
-
+    <v-text-field
+      v-model="emp_id"
+      label="Employee Id"
+      required
+    ></v-text-field>
   <v-text-field
+      v-model="date"
       label="Date"
+      type="date"
       required
     ></v-text-field>
 
-         <v-textarea
-      
+      <v-textarea
+      v-model="description"
       label="Description"
       clearable
       clear-icon="mdi-close-circle"
@@ -70,20 +77,30 @@
     
     
     <v-text-field
-      
+      v-model="department"
       :counter="30"
-      
       label="Departement"
       required
     ></v-text-field>
-     
   </v-form>
 </v-card>
+<v-col
+    cols="12"
+    class="text-right"
+  >
+    <v-btn
+      color="success"
+      class="mr-0"
+      @click="send" 
+    >
+      Send
+    </v-btn>
+  </v-col>
 </v-container>
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
    data() {
     return {
@@ -95,9 +112,46 @@ export default {
           text: "view status",
           route: "/view-status",
         },
+
         // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
       ],
-      // messages: [
+      emp_id:"",
+      date:"",
+      description: "",
+      department: "",
     
-    }}}
+    }
+    },
+  methods: {
+     send() {
+       console.log("sending")
+      //if (this.$refs.form.validate()) {
+      let newWarning = {
+        emp_id: this.emp_id,
+        date: this.date,
+        description: this.description,
+        department: this.department,
+         };
+     
+      // console.log("newCustomer", newCustomer);
+      axios
+        .post("http://localhost:3000/warnings", newWarning)
+        
+        .then((resp) => {
+          console.log(resp)
+          // this.get('/warnings', (req,res)=>{
+          //   res.render('/')
+          // })
+          // /
+          // this.$refs.form.reset();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      
+      return true;
+    },
+  },
+};
+    
 </script>

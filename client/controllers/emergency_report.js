@@ -6,7 +6,7 @@ const Emergency = require('../models/Emergency_report.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/emergencys', (req, res) => {
-  Emergency.find({}, 'Fname Lname phone_no location case description', function (error, emergency) {
+  Emergency.find({}, 'Fname Lname phone_no location select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency);
   })
@@ -14,7 +14,7 @@ module.exports.controller = function (app)  {
 
 //get a single user details
 app.get('/emergency/:id', (req, res) => {
-  Emergency.findById(req.params.id, 'Fname Lname phone_no location case description', function (error, emergency) {
+  Emergency.findById(req.params.id, 'Fname Lname phone_no location select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency)
  })
@@ -39,7 +39,7 @@ app.get('/emergency/:id', (req, res) => {
 
      // update a user
   app.put('/emergency/:id', (req, res) => {
-    Emergency.findById(req.params.id, 'Fname Lname phone_no location case description', function (error, emergency) {
+    Emergency.findById(req.params.id, 'Fname Lname phone_no location select description', function (error, emergency) {
     if (error) { console.error(error); }
       emergency.Fname = req.body.Fname
       emergency.Lname = req.body.Lname

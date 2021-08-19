@@ -1,8 +1,8 @@
 <template>
 <v-container >
  <v-form
-    ref="form"
     v-model="valid"
+    ref="form"
     lazy-validation
   >
  <div>
@@ -27,32 +27,26 @@
     <v-text-field
       v-model="Fname"
       :counter="10"
-      :rules="FnameRules"
       label=" First Name"
       required
     ></v-text-field>
      <v-text-field
       v-model="Lname"
       :counter="10"
-      :rules="LnameRules"
       label=" Last Name"
       required
     ></v-text-field>
-
-    <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
-      required
-    ></v-text-field>
      <v-text-field
-      v-model="phoneNumber"
-      :rules="phoneNumberRules"
-      
+      v-model="phone_no"
       label="Phone number"
       required
     ></v-text-field>
-
+     <v-text-field
+      v-model="location"
+      :counter="10"
+      label="Location"
+      required
+    ></v-text-field>
     <v-select
       v-model="select"
       :items="items"
@@ -60,19 +54,14 @@
       label="Case"
       required
     ></v-select>
-    <v-textarea
-      clearable
-      clear-icon="mdi-close-circle"
-     value="Please fill your report here"
-    ></v-textarea>
-
+    
    
 
     <v-btn
-      :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="send"
+      :disabled="!valid"
     >
       Send
       
@@ -84,41 +73,55 @@
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
     name:"Noncustomer",
     data: () => ({
-      // valid: true,
+       valid: true,
       Fname: '',
-      FnameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-      ],
-        Lname: '',
-      LnameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-      ],
-    
-       phoneNumber: '',
-      phoneNumberRules: [
-        [v => !!v || 'This field is required',
-        v => /^\d+$/.test(v)||'This field only accept numbers']
-      ],
+      Lname: '',
+      phone_no: '',
+      location: '',
       select: null,
       items: [
+        'Transformer Burning',
         'Fire',
         'Fall down',
         'Accident',
-        'Rain',
+        
       ],
      
     }),
 
-    methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
+   methods: {
+       send(){
+        let newEmergency ={
+          Fname: this.Fname,
+          Lname: this.Lname,
+          phone_no: this.phone_no,
+          location: this.location,
+          select: this.select,
+          
+        }; 
+      axios
+        .post("http://localhost:3000/emergencys", newEmergency)
+        .then(() => {
+          this.$router.push({ path: "/" });
+          this.$refs.form.reset();
+
+
+          this.get('/emergencys', (req,res)=>{
+            res.render('/')
+          })
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      
+      return true;
     },
-  }
+    },
+}
+    
 </script>

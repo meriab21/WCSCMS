@@ -10,11 +10,11 @@
         <v-spacer></v-spacer>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">My Account</span>
-          <v-icon right color="white">admin_panel_settings</v-icon>
+          <!-- <v-icon right color="white">admin_panel_settings</v-icon> -->
         </v-btn>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>
-          <v-icon right color="white">circle_notifications</v-icon>
+           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
 
         <v-btn text color="blue-grey darken-4">

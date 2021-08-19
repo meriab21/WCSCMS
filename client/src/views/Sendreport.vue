@@ -1,7 +1,7 @@
 <template>
 <v-container >
       <nav>
-      <v-app-bar text color="blue-grey darken-4" >
+      <v-app-bar  text color="blue-grey darken-4" >
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
@@ -10,7 +10,7 @@
         <v-spacer></v-spacer>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">My Account</span>
-          <v-icon right color="white">manager_panel_settings</v-icon>
+          <!-- <v-icon right color="white">manager_panel_settings</v-icon> -->
         </v-btn>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>
@@ -51,20 +51,17 @@
 <v-card text class="ma-8">
  <v-form
     ref="form"
-    v-model="valid"
-    lazy-validation
   >
  
   <v-spacer></v-spacer>
 
   <v-text-field
-  v-model="date"
       label="Date"
       required
     ></v-text-field>
 
          <v-textarea
-      v-model="description"
+      
       label="Description"
       clearable
       clear-icon="mdi-close-circle"
@@ -73,9 +70,9 @@
     
     
     <v-text-field
-      v-model="Lname"
+      
       :counter="30"
-      :rules="Departemant"
+      
       label="Departement"
       required
     ></v-text-field>

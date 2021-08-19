@@ -10,7 +10,6 @@
         <v-btn text color="blue-grey darken-4">
           <span class="white--text"> My Account</span>
           <v-spacer></v-spacer>
-          <v-icon right color="white"> Manager_panel_settings</v-icon>
         </v-btn>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>

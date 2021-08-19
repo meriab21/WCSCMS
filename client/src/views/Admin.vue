@@ -56,82 +56,44 @@
     <v-container fluid class="ma-10">
       <v-row justify="center">
         <v-subheader>List of Accounts</v-subheader>
+       
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-2">
+          Customers Accounts
+        </v-card-title>
+           <v-card-text>
+            <!-- :headers="headers" -->
+            <v-data-table :items="customers" :headers="customer_headers">
+              <template valid-slot:item.actions="{item}"> 
+               <router-link >
+                 <v-icon small class="mr-2" >mdi-pencil</v-icon>
+                 </router-link> 
+                <v-icon small @click="deleteItem1(item)">mdi-delete</v-icon>
+              </template>
+            </v-data-table>
+          </v-card-text>
+        </v-card>  
+          
 
-        <v-expansion-panels popout>
-          <v-expansion-panel
-            v-for="(message, i) in messages"
-            :key="i"
-            hide-actions
-          >
-            <v-expansion-panel-header>
-              <v-row align="center" class=" spacer" no-gutters>
-                <v-col cols="4" sm="2" md="1">
-                  <v-avatar size="36px">
-                    <img
-                      v-if="message.avatar"
-                      alt="Avatar"
-                      src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
-                    />
-                    <v-icon
-                      v-else
-                      :color="message.color"
-                      v-text="message.icon"
-                    ></v-icon>
-                  </v-avatar>
-                </v-col>
-
-                <v-col class="hidden-xs-only" sm="5" md="3">
-                  <strong v-html="message.name"></strong>
-                  <span v-if="message.total" class="grey--text">
-                    &nbsp;({{ message.total }})
-                  </span>
-                </v-col>
-
-                <v-col class="text-no-wrap" cols="5" sm="3">
-                  <v-chip
-                    v-if="message.new"
-                    :color="`${message.color} lighten-4`"
-                    class="ml-0 mr-2 black--text"
-                    label
-                    small
-                  >
-                    {{ message.new }} new
-                  </v-chip>
-                  <strong v-html="message.title"></strong>
-                </v-col>
-              </v-row>
-            </v-expansion-panel-header>
-
-            <v-expansion-panel-content>
-              <v-divider></v-divider>
-
-              <v-card text class="pa-3" v-for="info in infos" :key="info.title">
-                <v-layout row warp>
-                  <v-flex xs12 md6>
-                    <div class="caption grey--text ">Name</div>
-                    <div class="my-2">{{ info.title }}</div>
-                  </v-flex>
-                  <v-flex xs6 sm4 md2>
-                    <div class="caption grey--text ">Date</div>
-                    <div class="my-2">{{ info.date }}</div>
-                  </v-flex>
-                  <v-flex xs6 sm4 md2>
-                    <div>
-                      <v-chip
-                        small
-                        :class="`${info.status} white--text caption ma-6`"
-                        >{{ info.status }}</v-chip
-                      >
-                    </div>
-                  </v-flex>
-                </v-layout>
-              </v-card>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
+          <v-card class="ma-10" >
+            <v-card-title class="text-h5 grey lighten-2">
+          Employee Accounts
+        </v-card-title>
+              <v-card-text>
+            <v-data-table :headers="employee_headers" :items="employees">
+              <template valid-slot:item.actions="{ item }"> 
+                <router-link >
+                <v-icon small class="mr-2">mdi-pencil</v-icon>
+                </router-link>
+                <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
+              </template>
+            </v-data-table>
+          </v-card-text>
+          </v-card>
       </v-row>
     </v-container>
   </v-container>
+  
 </template>
 
 <script>
@@ -147,15 +109,9 @@ export default {
           text: "Create Account",
           route: "/createaccount",
         },
-        // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
+       
       ],
       messages: [
-        // {
-        //   icon: 'admin_panel_settings',
-        //   name: 'Created accounts',
-        //   title: 'Status',
-
-        // },
         {
           color: "red",
           icon: "emoji_people",
@@ -173,14 +129,138 @@ export default {
           title: "Active",
         },
       ],
-      lorem:
-        "Lorem ipsum dolor sit amet, at aliquam vivendum vel, everti delicatissimi cu eos. Dico iuvaret debitis mel an, et cum zril menandri. Eum in consul legimus accusam. Ea dico abhorreant duo, quo illum minimum incorrupte no, nostro voluptaria sea eu. Suas eligendi ius at, at nemore equidem est. Sed in error hendrerit, in consul constituam cum.",
-      infos: [
-        { title: "Users 1", date: "1st jan 2020", status: "active" },
-        { title: "Users 2", date: "2st feb 2020", status: "active" },
-        { title: "Users 3", date: "23st june 2019", status: "deleted" },
+      customers: [],
+      employees: [],
+      tabs: "",
+      editedIndex:-1,
+      editItemData:{
+        first_name:'',
+        last_name:'',
+        email:'',
+        phone_no:'',
+        address:'',
+        gender:'',
+        user_name:'',
+        password:'',
+      },
+      customer_headers: [
+        { text: "Id", value: "_id" },
+        { text: "First Name", value: "first_name" },
+        { text: "Last Name", value: "last_name" },
+        { text: "Email", value: "email" },
+        { text: "Phone Number", value: "phone_no" },
+        { text: "Address", value: "address" },
+        { text: "Gender", value: "gender" },
+        { text: "User Name", value: "username" },
+        { text: "Password", value: "password" },
+        { text: "Action", value: "actions", sortable: false }
       ],
-    };
+      employee_headers: [
+        { text: "Id", value: "_id" },
+        { text: "Employee Id", value: "emp_id" },
+        { text: "First Name", value: "fname" },
+        { text: "Last Name", value: "lname" },
+        { text: "Email", value: "email2" },
+        { text: "Phone Number", value: "phone_no2" },
+        { text: "Gender", value: "gender2" },
+        { text: "Branch", value: "branch" },
+        { text: "Department", value: "department" },
+        { text: "User Name", value: "username2" },
+        { text: "Password", value: "password2" },
+        { text: "Action", value: "actions", sortable: false }
+      ]
+       };
   },
-};
+  
+  mounted() {
+    this.fetchCustomers();
+    this.fetchEmployees();
+  },
+  methods: {
+    async fetchCustomers() {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/customers"
+      })
+        .then(response => {
+          this.customers = response.data;
+          console.log(this.customers);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    fetchEmployees() {
+      axios
+        .get("http://localhost:3000/employees")
+        .then(res => {
+          this.employees = res.data;
+          console.log(this.employees);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    editItem(item){
+
+      this.editedIndex = this.custmers.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+      
+      // axios
+      //   .put("http://localhost:3000/customers"),
+      
+    },
+    deleteItem1(item) {
+      axios
+    .delete(`http://localhost:3000/customer/${item._id}`)
+    .then(res => {
+      if(res.data.success){
+       this.customers = this.customers.filter(customer => customer._id != item._id)
+      }
+      else{
+        console.log('not success')
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+      // console.log(item._id)
+      // this.editedIndex = this.customers.indexOf(item);
+      // this.editedItem = Object.assign({}, item);
+      // this.dialogDelete = true;
+    },
+
+    deleteItemConfirm() {
+      this.customers.splice(this.editedIndex, 1);
+      this.closeDelete();
+    },
+    deleteItem(item) {
+      axios
+    .delete(`http://localhost:3000/employee/${item._id}`)
+    .then(res => {
+      if(res.data.success){
+       this.employees = this.employees.filter(employee => employee._id != item._id)
+      }
+      else{
+        console.log('not success')
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+      // console.log(item._id)
+      // this.editedIndex = this.customers.indexOf(item);
+      // this.editedItem = Object.assign({}, item);
+      // this.dialogDelete = true;
+    },
+
+    deleteItemConfirm() {
+      this.employees.splice(this.editedIndex, 1);
+      this.closeDelete();
+    }
+  }
+    };
+  
+
 </script>

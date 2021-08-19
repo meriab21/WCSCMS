@@ -20,7 +20,10 @@ import Assistant from './views/Assistant';
 import ContactUs from './views/ContactUs';
 import UserProfile from './views/UserProfile';
 import ForgotPassword from './views/ForgotPassword';
-
+import Rating from './views/Rating';
+import Manager from './views/Manager';
+import ViewReport from './views/ViewReport';
+import ViewStatus from './views/ViewStatus';
 Vue.use(VueRouter)
 
 import './SCSS/main.SCSS';
@@ -33,8 +36,7 @@ Vue.component('Login', Login);
 Vue.component('Customer', Customer);
 Vue.component('home', Home);
 Vue.component('Admin', Admin);
-Vue.component('UserProfile', UserProfile);
-
+Vue.component('Manager', Manager);
 
 
 

@@ -192,9 +192,11 @@
               ></v-select>
               <v-select
                 :items="[
-                  'Assistant',
+                  
                   'Manager',
+                  'Assistant',
                   'Operation Maintenance',
+                  'Customer Service',
                   'Care Worker',
                 ]"
                 label="Department"

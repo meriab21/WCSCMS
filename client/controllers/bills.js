@@ -4,7 +4,7 @@ const Bill = require('../models/Bill.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/bills', (req, res) => {
-  Bill.find({}, 'date username service_charge payment_date', function (error, bills) {
+  Bill.find({}, 'date service_charge payment_date', function (error, bills) {
   if (error) { console.log(error); }
   res.send(bills);
   })

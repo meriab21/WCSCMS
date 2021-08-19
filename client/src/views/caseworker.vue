@@ -4,7 +4,7 @@
       <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light white--text"> </span>
-        <span class="white--text mx-4"> Customer Service</span>
+        <span class="white--text mx-4">Case Worker </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text color="blue-grey darken-4">
@@ -65,12 +65,11 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table
-          :headers="headers"
-          :items="complaints"
-          :search="search"
-        ></v-data-table>
+        <v-data-table :headers="headers" :items="complaints"> </v-data-table>
       </v-card>
+      <v-chip class="ma-2" color="primary">
+        Primary
+      </v-chip>
     </v-container>
   </nav>
 </template>
@@ -84,9 +83,10 @@ export default {
     return {
       complaints: [],
       drawer: false,
+      search: "",
       links: [
-        { icon: "", text: "View report", route: "/ViewReport" },
-        { icon: "", text: "Send Bill", route: "/SendBill" },
+        { icon: "", text: "Home", route: "/" },
+        { icon: "", text: "Send report", route: "/Send-report" },
       ],
 
       headers: [
@@ -94,8 +94,8 @@ export default {
         { text: "Address", value: "address" },
         { text: "Phone Number", value: "phone_no" },
         { text: "Date", value: "date" },
-        { text: "Select", value: "select" },
         { text: "Description", value: "description" },
+        { text: "Action", value: "select" },
       ],
     };
   },

@@ -1,16 +1,16 @@
 <template>
   <v-container>
     <nav>
-      <v-app-bar text color="blue-grey darken-4">
+      <v-app-bar app text color="blue-grey darken-4">
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
-          <span class="white--text mx-4"> Report</span>
+          <span class="white--text mx-4">warning</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text color="blue-grey darken-4">
-          <span class="white--text">My Account</span>
-          <!-- <v-icon right color="white">manager_panel_settings</v-icon> -->
+          <span class="white--text" route to="/user-profile"> My Account</span>
+          <v-spacer></v-spacer>
         </v-btn>
         <v-btn text color="blue-grey darken-4">
           <span class="white--text">Notification</span>
@@ -18,7 +18,7 @@
         </v-btn>
 
         <v-btn text color="blue-grey darken-4">
-          <span class="white--text">Sign Out</span>
+          <span class="white--text" route to="/login">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
       </v-app-bar>
@@ -26,7 +26,7 @@
       <v-navigation-drawer
         absolute
         temporary
-        app
+        appapp
         v-model="drawer"
         class="blue-grey lighten-5"
       >
@@ -48,45 +48,51 @@
                 link.text
               }}</v-list-item-title>
             </v-list-item-content>
-            <!-- </v-list-item-title> -->
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </nav>
-    <v-card text class="ma-8">
-      <v-form ref="form">
-        <v-spacer></v-spacer>
 
-        <v-text-field label="Date" required></v-text-field>
+    <v-container class="mt-9">
+      <v-row justify="space-around">
+        <v-card width="700px">
+          <v-col cols="6">
+            <v-text-field
+              :rules="[(v) => !!v || ' Username is required']"
+              label="Employee_id"
+              required
+            ></v-text-field>
+          </v-col>
+          <v-col cols="6">
+            <v-text-field v-model="date" class="purple-input" type="Date" />
+          </v-col>
+          <v-col cols="6" md="12">
+            <v-textarea
+              label="Description"
+              clearable
+              clear-icon="mdi-close-circle"
+            ></v-textarea>
+          </v-col>
 
-        <v-textarea
-          label="Description"
-          clearable
-          clear-icon="mdi-close-circle"
-          lable="Please fill your report here"
-        ></v-textarea>
-
-        <v-text-field :counter="30" label="Departement" required></v-text-field>
-      </v-form>
-    </v-card>
+          <v-btn>
+            Send
+          </v-btn>
+        </v-card>
+      </v-row>
+    </v-container>
   </v-container>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      dialog: false,
       drawer: false,
-      links: [
-        { icon: "home", text: "Home", route: "/" },
-        {
-          icon: "person_add",
-          text: "view status",
-          route: "/view-status",
-        },
-        // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
-      ],
-      // messages: [
+      links: [{ icon: "home", text: "Home", route: "/" }],
+      valid: true,
+      date: "",
     };
   },
 };

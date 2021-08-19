@@ -17,11 +17,23 @@
 
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
-          Privacy Policy
+          Bill Report
         </v-card-title>
 
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <v-card-text    
+        >
+          <v-col cols="12">
+                    <div
+                      style="font-family: sans-serif; font-size: 20px; font-weight: lighter; margin-bottom: 0;"
+                    >Date {{bill.date}}</div>
+                    <div
+                      style="font-family: sans-serif; color: #333333; margine-top: 0;"
+                    >Service Charge: {{bill.service_charge}}</div>
+                    <div
+                      style="font-family: sans-serif; font-size: 20px; font-weight: lighter; margin-bottom: 0;"
+                    >Payment Date {{bill.payment_date}}</div>
+                  </v-col>
+          
         </v-card-text>
 
         <v-divider></v-divider>
@@ -44,8 +56,29 @@
   export default {
     data () {
       return {
-        dialog: false,
+        bills: [],
+
       }
+      
     },
+    mounted() {
+    this.fetchComplaints();
+  },
+  methods: {
+     async fetchComplaints() {
+         axios({
+        method: "get",
+        url: "http://localhost:3000/bills"
+      })
+        .then(response => {
+          this.complaints = response.data;
+          console.log(this.complaints);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+     }}
+
   }
 </script>

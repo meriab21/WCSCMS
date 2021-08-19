@@ -1,7 +1,7 @@
 <template>
 <v-container>
 <nav> 
-    <v-toolbar  text color="blue-grey darken-4" app>
+    <v-app-bar app text color="blue-grey darken-4" >
       
        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
@@ -73,78 +73,18 @@
             <v-icon right color="white">circle_notifications</v-icon>
             
         </v-btn>
-    <router-link
-        to="/"
-        tag="v-btn"
-      >
-        <v-btn text color="blue-grey darken-4" >
+    
+        <v-btn text color="blue-grey darken-4" route to='/'>
             <span class="white--text"  >Log out</span>
             <v-icon right color="white">exit_to_app</v-icon>
-          </v-btn>
-        </router-link>
-        <router-link to="/" tag="v-btn">
-          <v-btn icon color="white">
-            <v-icon>mdi-home</v-icon>
-          </v-btn>
-        </router-link>
-      </v-toolbar>
-      <v-spacer></v-spacer>
-
-      <v-menu
-        v-model="fromDateMenu"
-        :close-on-content-click="false"
-        :nudge-right="40"
-        lazy
-        transition="scale-transition"
-        offset-y
-        full-width
-        max-width="290px"
-        min-width="290px"
-      >
-        <template v-slot:activator="{ on }">
-          <v-text-field
-            label="Date"
-            :rules="[(v) => !!v || ' Date is required']"
-            readonly
-            :value="fromDateDisp"
-            v-on="on"
-          ></v-text-field>
-        </template>
-        <v-date-picker
-          locale="en-in"
-          v-model="fromDateVal"
-          no-title
-          @input="fromDateMenu = false"
-        ></v-date-picker>
-      </v-menu>
-
-      <v-text-field
-        v-model="address"
-        :rules="[(v) => !!v || ' Address is required']"
-        label="Address"
-        required
-      ></v-text-field>
-
-      <v-select
-        v-model="select"
-        :items="items"
-        :rules="[(v) => !!v || ' Title is required']"
-        label="Title"
-        required
-      ></v-select>
-      <v-textarea
-        clearable
-        clear-icon="mdi-close-circle"
-        :rules="[(v) => !!v || ' Description is required']"
-        value="Description"
-        required
-      ></v-textarea>
-
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
-        Send
+        </v-btn>
+    
+    
+      <v-btn icon color="white" route to="/">
+        <v-icon>mdi-home</v-icon>
       </v-btn>
-</router-link>
-    </v-toolbar>
+
+    </v-app-bar>
      <v-spacer></v-spacer> 
     
     <v-col cols="6">

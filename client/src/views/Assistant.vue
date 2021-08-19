@@ -85,6 +85,7 @@ export default {
     return {
       drawer: false,
       links: [{ icon: "", text: "View report", route: "/ViewReport" }],
+      links: [{ icon: "", text: "View report", route: "/ViewComplaint" }],
       search: "",
       headers: [
         {

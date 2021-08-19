@@ -1,11 +1,11 @@
 <template>
-<v-container >
-      <nav>
-      <v-app-bar  text color="blue-grey darken-4" >
+  <v-container>
+    <nav>
+      <v-app-bar text color="blue-grey darken-4">
         <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
-          <span class="white--text mx-4"> Manager</span>
+          <span class="white--text mx-4"> Report</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text color="blue-grey darken-4">
@@ -30,24 +30,30 @@
         v-model="drawer"
         class="blue-grey lighten-5"
       >
+        <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
-          <p class="display-2 mx-4 subheading grey--text">CSCMS</p> 
-
-            <v-list>
-            <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
-
+        <v-list>
+          <v-list-item
+            v-for="link in links"
+            :key="link.text"
+            router
+            :to="link.route"
+          >
             <v-list-item-action>
-                <v-icon class="mx-4">{{link.icon}}</v-icon>
+              <v-icon class="mx-4">{{ link.icon }}</v-icon>
             </v-list-item-action>
 
-                <v-list-item-content>
-                  <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
-                </v-list-item-content>
-                  <!-- </v-list-item-title> -->
-            </v-list-item>
-            </v-list> 
+            <v-list-item-content>
+              <v-list-item-title class="dark--text">{{
+                link.text
+              }}</v-list-item-title>
+            </v-list-item-content>
+            <!-- </v-list-item-title> -->
+          </v-list-item>
+        </v-list>
       </v-navigation-drawer>
     </nav>
+<<<<<<< HEAD
     <h1>send warning</h1>
 <v-card text class="ma-8">
  <v-form
@@ -101,8 +107,30 @@
 
 <script>
 import axios from "axios";
+=======
+    <v-card text class="ma-8">
+      <v-form ref="form">
+        <v-spacer></v-spacer>
+
+        <v-text-field label="Date" required></v-text-field>
+
+        <v-textarea
+          label="Description"
+          clearable
+          clear-icon="mdi-close-circle"
+          lable="Please fill your report here"
+        ></v-textarea>
+
+        <v-text-field :counter="30" label="Departement" required></v-text-field>
+      </v-form>
+    </v-card>
+  </v-container>
+</template>
+
+<script>
+>>>>>>> 0140d59a74cd28a34a4d4d31aa5e24f72bfaec15
 export default {
-   data() {
+  data() {
     return {
       drawer: false,
       links: [
@@ -115,6 +143,7 @@ export default {
 
         // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
       ],
+<<<<<<< HEAD
       emp_id:"",
       date:"",
       description: "",
@@ -155,3 +184,10 @@ export default {
 };
     
 </script>
+=======
+      // messages: [
+    };
+  },
+};
+</script>
+>>>>>>> 0140d59a74cd28a34a4d4d31aa5e24f72bfaec15

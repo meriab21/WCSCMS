@@ -3,7 +3,7 @@ const Customer = require('../models/Customer.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/customers', (req, res) => {
-  Customer.find({}, 'fisrt_name last_name email phone_no address gender username password ', function (error, customers) {
+  Customer.find({}, 'first_name last_name email phone_no address gender username password ', function (error, customers) {
   if (error) { console.log(error); }
   res.send(customers);
   })
@@ -11,7 +11,7 @@ module.exports.controller = function (app)  {
 
 //get a single user details
 app.get('/customer/:id', (req, res) => {
-  Customer.findById(req.params.id, 'fisrt_name last_name email phone_no address gender username password', function (error, customer) {
+  Customer.findById(req.params.id, 'first_name last_name email phone_no address gender username password', function (error, customer) {
   if (error) { console.log(error); }
   res.send(customer)
  })
@@ -20,7 +20,7 @@ app.get('/customer/:id', (req, res) => {
  // add a new user
     app.post('/customers', (req, res) => {
       const newCustomer = new Customer({
-      fisrt_name: req.body.fisrt_name,
+      first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
       phone_no: req.body.phone_no,
@@ -38,9 +38,9 @@ app.get('/customer/:id', (req, res) => {
 
      // update a user
   app.put('/customer/:id', (req, res) => {
-    Customer.findById(req.params.id, 'fisrt_name last_name email phone_no address gender username password', function (error, customer) {
+    Customer.findById(req.params.id, 'first_name last_name email phone_no address gender username password', function (error, customer) {
     if (error) { console.error(error); }
-      customer.fisrt_name=req.body.fisrt_name
+      customer.first_name=req.body.first_name
       customer.last_name= req.body.last_name
       customer.email= req.body.email
       customer.phone_no= req.body.phone_no

@@ -35,6 +35,7 @@ const router = new VueRouter({
      {path:'/admin',component:Admin},
        
      {path:'/create-account',component:CreateAccount},
+     
    ]
  })
  Vue.use(vuetify);

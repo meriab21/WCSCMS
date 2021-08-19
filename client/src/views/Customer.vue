@@ -86,7 +86,7 @@
 
     </v-app-bar>
      <v-spacer></v-spacer> 
-    
+    <v-form class="ma-12">
     <v-col cols="6">
     <v-text-field
       v-model="date"
@@ -128,49 +128,13 @@
       @click="register"
       :disabled="!valid">Send  
     </v-btn>
-
+    </v-form>
 <v-navigation-drawer absolute temporary app v-model="drawer" class="blue-grey darken-4" >
     <p class="display-2  mx-4 subheading grey--text">CSCMS</p>
 
 
 
-      <v-dialog
-      v-model="dialog"
-      width="500"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn text  class="mx-14" 
-       color="white"
-          v-bind="attrs"
-          v-on="on"
-        >
-          View Status
-        </v-btn>
-      </template>
-
-      <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Privacy Policy
-        </v-card-title>
-
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
-            @click="dialog = false"
-          >
-            I accept
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+      
     <v-dialog
       v-model="dialog"
       width="500"
@@ -187,13 +151,28 @@
 
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
-          Privacy Policy
+          Bill Report
         </v-card-title>
+         <v-list v-for="(bill, index) in bills" :key="index">
+        <v-list-item>
+          <div
+             style="font-family: sans-serif; font-size: 17px; font-weight: lighter; margin-bottom: 0;"
+            > Date :{{bill.date}}</div>
+        </v-list-item>
+         <v-list-item>
+         <div
+             style="font-family: sans-serif; font-size: 17px; font-weight: lighter; margin-bottom: 0;"
+            > Service_Charge :{{bill.service_charge}}</div>
+            </v-list-item>
+         <v-list-item>
+            <div
+             style="font-family: sans-serif; font-size: 17px; font-weight: lighter; margin-bottom: 0;"
+            >  Payment_Date :{{bill.payment_date}}</div>
+         </v-list-item>
+         
 
-        <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </v-card-text>
-
+        
+         </v-list>
         <v-divider></v-divider>
 
         <v-card-actions>
@@ -203,7 +182,7 @@
             text
             @click="dialog1 = false"
           >
-            I accept
+            ok
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -227,7 +206,8 @@ export default {
     data() {
       
         return {
-            
+            bills: [],
+
             dialog: false,
             drawer: false,
             
@@ -252,6 +232,7 @@ export default {
     
     }
     },
+   
     methods: {
       register(){
         let newComplaint ={
@@ -281,5 +262,23 @@ export default {
       return true;
     },
     },
+    mounted() {
+    this.fetchBills();
+     },
+     methods: {
+     async fetchBills() {
+       axios({
+        method: "get",
+        url: "http://localhost:3000/bills"
+      })
+        .then(response => {
+          this.bills = response.data;
+          console.log(this.bills);
+        })
+        .catch(error => {
+          console.error(error);
+        });
        }
+}
+}
 </script>

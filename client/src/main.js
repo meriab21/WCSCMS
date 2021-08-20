@@ -26,7 +26,7 @@ import Sendreport from './views/Sendreport';
 import ViewStatus from './views/ViewStatus';
 import caseworker from './views/caseworker';
 import Warning from './views/Warning';
-
+import Assigncaseworker from './views/Assigncaseworker';
 
 
 Vue.use(VueRouter)
@@ -70,7 +70,7 @@ const router = new VueRouter({
         {path:'/View-status',component:ViewStatus},
         {path:'/case-worker',component:caseworker},
         {path:'/warning',component:Warning},
-            
+        {path:'/Assigncaseworker',component:Assigncaseworker},    
       ]
  })
  Vue.use(vuetify);

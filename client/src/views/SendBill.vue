@@ -1,23 +1,18 @@
 <template>
   <container>
     <nav>
-      <v-app-bar app text color="blue-grey darken-4">
-        <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
+      <v-app-bar app text color="indigo">
+        <v-btn text color="indigo lighten-5" route to="/CustomerService">
+          <v-icon right color="white">skip_previous</v-icon>
+        </v-btn>
+
         <v-toolbar-title class="text-uppercase grey--text">
           <span class="font-weight-light white--text"> </span>
           <span class="white--text mx-4">Send bill</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text color="blue-grey darken-4">
-          <span class="white--text">My Account</span>
-          <v-icon right color="white">admin_panel_settings</v-icon>
-        </v-btn>
-        <v-btn text color="blue-grey darken-4">
-          <span class="white--text">Notification</span>
-          <v-icon right color="white">circle_notifications</v-icon>
-        </v-btn>
 
-        <v-btn text color="blue-grey darken-4">
+        <v-btn text color="indigo lighten-5">
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>

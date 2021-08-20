@@ -53,68 +53,14 @@
         </v-list>
       </v-navigation-drawer>
     </nav>
-<<<<<<< HEAD
-    <h1>send warning</h1>
-<v-card text class="ma-8">
- <v-form
-    ref="form"
-  >
- 
-  <v-spacer></v-spacer>
-    <v-text-field
-      v-model="emp_id"
-      label="Employee Id"
-      required
-    ></v-text-field>
-  <v-text-field
-      v-model="date"
-      label="Date"
-      type="date"
-      required
-    ></v-text-field>
-
-      <v-textarea
-      v-model="description"
-      label="Description"
-      clearable
-      clear-icon="mdi-close-circle"
-     lable="Please fill your report here"
-    ></v-textarea>
-    
-    
-    <v-text-field
-      v-model="department"
-      :counter="30"
-      label="Departement"
-      required
-    ></v-text-field>
-  </v-form>
-</v-card>
-<v-col
-    cols="12"
-    class="text-right"
-  >
-    <v-btn
-      color="success"
-      class="mr-0"
-      @click="send" 
-    >
-      Send
-    </v-btn>
-  </v-col>
-</v-container>
-</template>
-
-<script>
-import axios from "axios";
-=======
     <v-card text class="ma-8">
       <v-form ref="form">
         <v-spacer></v-spacer>
 
-        <v-text-field label="Date" required></v-text-field>
+        <v-text-field v-model="date" label="Date" required type="date"></v-text-field>
 
         <v-textarea
+          v-model="description"
           label="Description"
           clearable
           clear-icon="mdi-close-circle"
@@ -123,40 +69,34 @@ import axios from "axios";
 
         <v-text-field :counter="30" label="Departement" required></v-text-field>
       </v-form>
+    <v-btn @click="send" :disabled="!valid">Send</v-btn>
     </v-card>
   </v-container>
 </template>
 
 <script>
->>>>>>> 0140d59a74cd28a34a4d4d31aa5e24f72bfaec15
+import axios from "axios";
 export default {
+ 
   data() {
     return {
       drawer: false,
       links: [
-        { icon: "home", text: "Home", route: "/" },
-        {
-          icon: "person_add",
-          text: "view status",
-          route: "/view-status",
-        },
-
-        // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
+        
       ],
-<<<<<<< HEAD
-      emp_id:"",
+      valid: true,
+     
       date:"",
       description: "",
       department: "",
-    
-    }
-    },
+     
+    };
+  },
   methods: {
-     send() {
-       console.log("sending")
+  send() {
       //if (this.$refs.form.validate()) {
-      let newWarning = {
-        emp_id: this.emp_id,
+      let newReport = {
+        
         date: this.date,
         description: this.description,
         department: this.department,
@@ -164,30 +104,22 @@ export default {
      
       // console.log("newCustomer", newCustomer);
       axios
-        .post("http://localhost:3000/warnings", newWarning)
-        
+        .post("http://localhost:3000/reports", newReport)
+      
         .then((resp) => {
           console.log(resp)
-          // this.get('/warnings', (req,res)=>{
-          //   res.render('/')
-          // })
-          // /
-          // this.$refs.form.reset();
+          this.get('/warnings', (req,res)=>{
+            res.render('/')
+          })
+          // this.$router.push({ path: "/" });
+          this.$refs.form.reset();
         })
         .catch((err) => {
           console.log(err);
         });
-      
+      //} // VALIDATION END
       return true;
     },
   },
 };
-    
 </script>
-=======
-      // messages: [
-    };
-  },
-};
-</script>
->>>>>>> 0140d59a74cd28a34a4d4d31aa5e24f72bfaec15

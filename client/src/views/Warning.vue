@@ -58,6 +58,7 @@
         <v-card width="700px">
           <v-col cols="6">
             <v-text-field
+               v-model="emp_id"
               :rules="[(v) => !!v || ' Username is required']"
               label="Employee_id"
               required
@@ -74,7 +75,7 @@
             ></v-textarea>
           </v-col>
 
-          <v-btn>
+          <v-btn @click="send">
             Send
           </v-btn>
         </v-card>
@@ -86,14 +87,59 @@
 <script>
 import axios from "axios";
 export default {
+  // components: {
+  //     WarningAppBar: () => import('./components/core/AppBar'),
+  //     WarningDrawer: () => import('./components/core/Drawer'),
+  //     WarningSettings: () => import('./components/core/Settings'),
+  //     WarningView: () => import('./components/core/View'),
+  //   },
   data() {
     return {
-      dialog: false,
       drawer: false,
-      links: [{ icon: "home", text: "Home", route: "/" }],
+      links: [
+        // { icon: "home", text: "Home", route: "/" },
+        // {
+        //   icon: "person_add",
+        //   text: "Create Account",
+        //   route: "/create-account",
+        // },
+        // // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
+      ],
       valid: true,
-      date: "",
+      emp_id:"",
+      date:"",
+      description: "",
+      type: "",
+     
     };
+  },
+  methods: {
+  send() {
+      //if (this.$refs.form.validate()) {
+      let newWarning = {
+        emp_id: this.emp_id,
+        date: this.date,
+        description: this.description,
+        caseWorker:this.caseWorker,
+         };
+     
+      // console.log("newCustomer", newCustomer);
+      axios
+        .post("http://localhost:3000/warnings", newWarning)
+     
+        .then(() => {
+          this.get('/warnings', (req,res)=>{
+            res.render('/')
+          })
+          // this.$router.push({ path: "/" });
+          this.$refs.form.reset();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      //} // VALIDATION END
+      return true;
+    },
   },
 };
 </script>

@@ -6,10 +6,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const fs = require('fs');
 const router = express.Router();
-const webpush = require('web-push');
-
-const publicVapidKey ='BAWwn-7Ywma9CEnBd12sV1MFQkwtBjKX0miB86bMAqlgp_9Lipqchbe5dRXo8DwPnEkya9HijB4CaCvELhjLPVI';
-const privateVapidKey ='etAzdf2KYLlJ2nfz8tCeUTQvzcXhh4W-UJqmx1ndciI';
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
@@ -36,7 +32,7 @@ fs.readdirSync("controllers").forEach(function (file) {
 
 
 
-webpush.setVapidDetails('mailto:biniam@test.com',publicVapidKey, privateVapidKey);
+
 
 
 

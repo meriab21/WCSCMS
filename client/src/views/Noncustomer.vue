@@ -90,9 +90,9 @@ export default {
           this.$router.push({ path: "/" });
           this.$refs.form.reset();
 
-          this.get("/emergencys", (req, res) => {
-            res.render("/");
-          });
+          // this.get("/emergencys", (req, res) => {
+          //   res.render("/");
+          // });
         })
         .catch((err) => {
           console.log(err);

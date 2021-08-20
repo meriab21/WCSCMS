@@ -72,18 +72,9 @@ export default {
           text: "view status",
           route: "/view-status",
         },
-<<<<<<< HEAD
-      ]
-      
-    }
-    }
-    }
-</script>
-=======
         { icon: "warning_amber", text: "send warning", route: "/warning" },
       ],
     };
   },
 };
 </script>
->>>>>>> 0140d59a74cd28a34a4d4d31aa5e24f72bfaec15

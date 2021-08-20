@@ -107,7 +107,7 @@
           required
         ></v-select>
 
-        <v-btn color="success" class="mr-4" @click="register" :disabled="!valid">Send</v-btn>
+        <v-btn color="success" class="mr-4" @click="register">Send</v-btn>
       </v-form>
       <v-navigation-drawer absolute temporary app v-model="drawer" class="blue-grey darken-4">
         <p class="display-2 mx-4 subheading grey--text">CSCMS</p>

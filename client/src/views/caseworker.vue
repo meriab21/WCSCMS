@@ -1,13 +1,13 @@
 <template>
   <nav>
-    <v-app-bar app text color="blue-grey darken-4">
+    <v-app-bar app text color="indigo">
       <v-icon color="white" @click.stop="drawer = !drawer">menu_open</v-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light white--text"> </span>
         <span class="white--text mx-4">Case Worker </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text color="blue-grey darken-4">
+      <v-btn text color="blue-grey darken-4" route to="user-profile">
         <span class="white--text">My Account</span>
         <v-icon right color="white">admin_panel_settings</v-icon>
       </v-btn>
@@ -27,7 +27,7 @@
       temporary
       app
       v-model="drawer"
-      class="blue-grey lighten-5"
+      class="indigo lighten-5"
     >
       <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
@@ -65,11 +65,15 @@
             hide-details
           ></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="complaints"> </v-data-table>
+        <v-data-table :headers="headers" :items="complaints">
+          <template #item.actions="{ item }">
+            <router-link to="/customers">
+              <v-span>Accept</v-span>
+              <v-icon small color="green" class="mr-2">check</v-icon>
+            </router-link>
+          </template>
+        </v-data-table>
       </v-card>
-      <v-chip class="ma-2" color="primary">
-        Primary
-      </v-chip>
     </v-container>
   </nav>
 </template>
@@ -81,12 +85,14 @@ export default {
   components: { App },
   data() {
     return {
-      complaints: [],
+      complaints: [
+        { text: "Action", icon: "home", value: "actions", sortable: false },
+      ],
       drawer: false,
       search: "",
       links: [
-        { icon: "", text: "Home", route: "/" },
-        { icon: "", text: "Send report", route: "/Send-report" },
+        { icon: "home", text: "Home", route: "/" },
+        { icon: "ios_share", text: "Send report", route: "/Send-report" },
       ],
 
       headers: [
@@ -95,7 +101,7 @@ export default {
         { text: "Phone Number", value: "phone_no" },
         { text: "Date", value: "date" },
         { text: "Description", value: "description" },
-        { text: "Action", value: "select" },
+        { text: "Action", value: "actions", sortable: false },
       ],
     };
   },

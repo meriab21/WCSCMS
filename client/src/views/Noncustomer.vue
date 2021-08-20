@@ -2,7 +2,7 @@
   <v-container>
     <v-form>
       <div>
-        <v-toolbar color="grey darken-4">
+        <v-toolbar color="indigo">
           <v-spacer></v-spacer>
           <v-btn icon color="white" route to="/">
             <v-icon>mdi-home</v-icon>

@@ -67,10 +67,7 @@
         </v-card-title>
         <v-data-table :headers="headers" :items="complaints">
           <template #item.actions="{ item }">
-            <router-link to="/customers">
-              <v-span>Accept</v-span>
-              <v-icon small color="green" class="mr-2">check</v-icon>
-            </router-link>
+            <v-btn color="success">Accept</v-btn>
           </template>
         </v-data-table>
       </v-card>

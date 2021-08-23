@@ -24,6 +24,8 @@ import Rating from './views/Rating';
 import Manager from './views/Manager';
 import ViewReport from './views/ViewReport';
 import ViewStatus from './views/ViewStatus';
+
+
 Vue.use(VueRouter)
 
 import './SCSS/main.SCSS';
@@ -59,6 +61,10 @@ const router = new VueRouter({
         {path:'/AboutUs',component:AboutUs},
         {path:'/user-profile',component:UserProfile},
         {path:'/Forgot-password',component:ForgotPassword},
+        {path:'/Rating',component:Rating},
+        {path:'/ViewReport',component:ViewReport},
+        {path:'/ViuewStatus',component:ViewStatus},
+        
             
       ]
  })

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const bcrypt= require('bcrypt');
 const cors = require('cors');
 const morgan = require('morgan');
 const fs = require('fs');

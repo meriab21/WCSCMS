@@ -1,5 +1,6 @@
 /* eslint-disable */
 const mongoose = require('mongoose');
+const bcryptjs = require('bcryptjs');
 
 const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
@@ -14,3 +15,15 @@ const CustomerSchema = new Schema({
 },{collection: "customer"});
 const Customer = mongoose.model('Customer', CustomerSchema)
 module.exports = Customer;
+
+//hashing password
+module.exports.createUser = (newUser, callback) => {
+    bcryptjs.genSalt(10, (err, salt) => {
+    bcryptjs.hash(newUser.password, salt, (error, hash) => {
+    // store the hashed password
+    const newUserResource = newUser;
+    newUserResource.password = hash;
+    newUserResource.save(callback);
+    });
+    });
+   };

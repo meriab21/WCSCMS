@@ -55,9 +55,9 @@
 
     <v-container fluid class="ma-10">
       <v-row justify="center">
-        <v-subheader>List of Accounts</v-subheader>
+        
        
-        <v-card>
+        <v-card class="ma-10">
           <v-card-title class="text-h5 grey lighten-2">
           Customers Accounts
         </v-card-title>

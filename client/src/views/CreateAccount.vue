@@ -299,13 +299,19 @@ export default {
       console.log("newuser", newUser);
       axios
         .post("http://localhost:3000/employees", newUser)
-        .then(() => {
+        
+          .then(() => {
+           
+          
+
           this.$router.push({ path: "admin" });
           this.$refs.form.reset();
         })
-        .catch((err) => {
-          console.log(err);
+        
+        .catch((error) => {
+            
         });
+
     },
 
     submit() {
@@ -323,24 +329,14 @@ export default {
       console.log("newuser", newUser);
       axios
         .post("http://localhost:3000/customers", newUser)
-        //       return axios({
-        //         method: 'post',
-        //           data: {
-
-        //       },
-        //    url: 'http://localhost:3000/customers',
-        //     headers: {
-        //        'main-Type': 'application/json',
-        //       },
-        //     })
         .then(() => {
-          this.$router.push({ path: "admin" });
+          this.$router.push({ path: "/admin" });
           this.$refs.form.reset();
         })
-        .catch((err) => {
-          console.log(err);
-        });
-      //} // VALIDATION END
+       .catch((error) => {
+        
+       });
+
       return true;
     },
   },

@@ -18,7 +18,7 @@ app.get('/customer/:id', (req, res) => {
 })
     
  // add a new user
-    app.post('/customers', (req, res) => {
+    app.post('/customers', async (req, res) => {
       const newCustomer = new Customer({
       first_name: req.body.first_name,
       last_name: req.body.last_name,

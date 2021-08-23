@@ -20,6 +20,7 @@ import Assistant from './views/Assistant';
 import ContactUs from './views/ContactUs';
 import UserProfile from './views/UserProfile';
 import ForgotPassword from './views/ForgotPassword';
+import Notification from './views/Notification';
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,7 @@ const router = new VueRouter({
         {path:'/AboutUs',component:AboutUs},
         {path:'/user-profile',component:UserProfile},
         {path:'/Forgot-password',component:ForgotPassword},
+        
             
       ]
  })

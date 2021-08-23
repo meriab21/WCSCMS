@@ -1,15 +1,7 @@
 <template>
   <div class="text-center">
-    <v-menu offset-y>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Dropdown
-        </v-btn>
+    <!-- <v-menu offset-y>
+     
       </template>
       <v-list>
         <v-list-item
@@ -19,7 +11,7 @@
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
-    </v-menu>
+    </v-menu> -->
   </div>
 </template>
 <script>

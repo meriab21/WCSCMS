@@ -31,10 +31,10 @@
       class="pa-6 pt-8"
     >
      <v-text-field
-        v-model="username"
+        v-model="email"
         filled
         color="deep-purple"
-        label="Username"
+        label="Email"
       ></v-text-field>
       <v-text-field
         v-model="password"
@@ -72,7 +72,7 @@
       </router-link>
       <v-btn color="success"
         
-        @click="$refs.form.reset()"
+        @click="submit"
       >
         Login
       </v-btn>
@@ -110,25 +110,55 @@
 </v-container>
 </template>
 <script>
+import axios from "axios";
 export default {
      data: () => ({
       agreement: false,
    
       dialog: false,
-      username: undefined,
+      email: undefined,
       form: false,
       isLoading: false,
       password: undefined,
-      BP: undefined,
+      Forgotpassword: undefined,
       rules: {
-        username: v => !!(v || '').match(/@/) || 'Please enter a valid username',
+        email: v => !!(v || '').match(/@/) || 'Please enter a valid email',
         length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
         password: v => !!(v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) ||
           'Password must contain an upper case letter, a numeric character, and a special character',
         required: v => !!v || 'rest ur password if forgot',
       },
     }),
-  }
+methods: {
+ async submit() {
+  
+ return axios({
+ method: 'post',
+ data: {
+ email: this.email,
+ password: this.password,
+ },
+ url: 'http://localhost:3000/users/login',
+ headers: {
+ 'Content-Type': 'application/json',
+ },
+ })
+ .then((response) => {
+ window.localStorage.setItem('auth', response.data.token);
+//  zzthis.$swal('Great!', 'You are ready to start!', 'success');
+//  this.$router.push({ path: '/' });
+ })
+ .catch((error) => {
+ const message = error.response.data.message;
+//  this.$swal('Oh oo!', `${message}`, 'error');
+//  this.$router.push({ name: 'Login' });
+ });
+ },
+ clear() {
+ this.$refs.form.reset();
+ },
+ },
+};
 </script>
 
     

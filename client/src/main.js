@@ -22,8 +22,11 @@ import UserProfile from './views/UserProfile';
 import ForgotPassword from './views/ForgotPassword';
 import Rating from './views/Rating';
 import Manager from './views/Manager';
-import ViewReport from './views/ViewReport';
+import Sendreport from './views/Sendreport';
 import ViewStatus from './views/ViewStatus';
+import caseworker from './views/caseworker';
+import Warning from './views/Warning';
+import Assigncaseworker from './views/Assigncaseworker';
 
 
 Vue.use(VueRouter)
@@ -61,11 +64,13 @@ const router = new VueRouter({
         {path:'/AboutUs',component:AboutUs},
         {path:'/user-profile',component:UserProfile},
         {path:'/Forgot-password',component:ForgotPassword},
+        {path:'/Manager',component:Manager},
         {path:'/Rating',component:Rating},
-        {path:'/ViewReport',component:ViewReport},
-        {path:'/ViuewStatus',component:ViewStatus},
-        
-            
+        {path:'/Send-report',component:Sendreport},
+        {path:'/View-status',component:ViewStatus},
+        {path:'/case-worker',component:caseworker},
+        {path:'/warning',component:Warning},
+        {path:'/Assigncaseworker',component:Assigncaseworker},    
       ]
  })
  Vue.use(vuetify);

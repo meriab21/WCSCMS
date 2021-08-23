@@ -30,7 +30,7 @@
         v-model="drawer"
         class="blue-grey lighten-5"
       >
-        <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
+        <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
         <v-list>
           <v-list-item
@@ -64,11 +64,11 @@
            <v-card-text>
             <!-- :headers="headers" -->
             <v-data-table :items="customers" :headers="customer_headers">
-              <template valid-slot:item.actions="{item}"> 
-               <router-link >
-                 <v-icon small class="mr-2" >mdi-pencil</v-icon>
-                 </router-link> 
-                <v-icon small @click="deleteItem1(item)">mdi-delete</v-icon>
+              <template #item.actions="{ item }">
+               <router-link to="/customers" >
+                 <v-icon small color="warning" class="mr-2" >mdi-pencil</v-icon>
+              </router-link> 
+                <v-icon small color="red" @click="deleteItem1(item)">mdi-delete</v-icon>
               </template>
             </v-data-table>
           </v-card-text>
@@ -81,11 +81,11 @@
         </v-card-title>
               <v-card-text>
             <v-data-table :headers="employee_headers" :items="employees">
-              <template valid-slot:item.actions="{ item }"> 
-                <router-link >
-                <v-icon small class="mr-2">mdi-pencil</v-icon>
-                </router-link>
-                <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
+              <template #item.actions="{ item }">
+               <router-link to="/customers" >
+                 <v-icon small color="warning" class="mr-2" >mdi-pencil</v-icon>
+              </router-link> 
+                <v-icon small color="red" @click="deleteItem1(item)">mdi-delete</v-icon>
               </template>
             </v-data-table>
           </v-card-text>

@@ -7,9 +7,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const fs = require('fs');
 const router = express.Router();
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+
+
+
 //connect to mongodb
 mongoose.connect('mongodb://127.0.0.1:27017/CSCMS', function() {
  console.log('Connection has been made');
@@ -26,6 +30,13 @@ fs.readdirSync("controllers").forEach(function (file) {
          route.controller(app);
     };
    });
+
+
+
+
+
+
+
    // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

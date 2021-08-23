@@ -5,13 +5,16 @@
     class="mx-auto mp-auto"
     style="max-width: 400px;"
   >
+<<<<<<< HEAD
     <!-- <v-system-bar
       color="blue(grey)-4"
       dark
     > -->
     <!-- login form -->
+=======
+    
+>>>>>>> 1fae02ee1b8ddfda6b8b65602949ab7b4d3287bd
      
-  
     <v-toolbar
       color="blue(grey)-4"
       cards
@@ -46,15 +49,9 @@
         style="min-height: 96px"
         type=""
       ></v-text-field>
-       <!-- <v-text-field
-        v-model="number"
-        filled
-        color="deep-purple"
-        label="BP"
-      ></v-text-field>
-      -->
+       
       <v-checkbox
-        v-model="Forgotpassword"
+        
         :rules="[rules.required]"
         color="deep-purple"
       >
@@ -66,13 +63,16 @@
     </v-form>
     <v-divider></v-divider>
     <v-card-actions>
-      <router-link
-      to="/customer"
-      tag="v-btn">
-      </router-link>
+      
+
       <v-btn color="success"
+<<<<<<< HEAD
         
         @click="submit"
+=======
+        route to ="/Customer"
+        @click="$refs.form.reset()"
+>>>>>>> 1fae02ee1b8ddfda6b8b65602949ab7b4d3287bd
       >
         Login
       </v-btn>
@@ -89,20 +89,7 @@
       <v-card>
        
      <v-card-actions>
-          <!-- <v-btn
-            text
-            @click="agreement = false, dialog = false"
-          >
-            No
-          </v-btn> -->
-          <!-- <v-spacer></v-spacer> -->
-          <!-- <v-btn
-            class="white--text"
-            color="deep-purple accent-4"
-            @click="agreement = true, dialog = false"
-          >
-            Yes
-          </v-btn> -->
+         
         </v-card-actions>
       </v-card>
     </v-dialog>

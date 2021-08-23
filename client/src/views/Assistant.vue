@@ -38,7 +38,7 @@
         <span class="white--text mx-4"> Assistant</span>
 
         <v-spacer></v-spacer>
-        <v-btn text color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4" route to="/user-profile">
           <span class="white--text">My profile</span>
           <v-icon right color="white">mdi-account</v-icon>
         </v-btn>

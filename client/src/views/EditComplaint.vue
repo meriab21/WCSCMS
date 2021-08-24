@@ -4,7 +4,7 @@
        <div>
         <v-toolbar color="indigo"  text="Edit Customers">
           <v-spacer></v-spacer>
-          <v-btn icon color="white" route to="/Admin">
+          <v-btn icon color="white" route to="/Customers">
             <v-icon>mdi-home</v-icon>
           </v-btn>
         </v-toolbar>
@@ -17,7 +17,7 @@
       </v-btn>
       
           <v-card>
-             <v-card-title>Edit Customer</v-card-title>
+             <v-card-title>Edit Complaint</v-card-title>
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field
                 class="ma-6"

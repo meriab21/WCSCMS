@@ -17,7 +17,7 @@
           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
 
-        <v-btn text color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4" route to="/">
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -65,8 +65,8 @@
             <!-- :headers="headers" -->
             <v-data-table :items="customers" :headers="customer_headers">
               <template #item.actions="{ item }">
-               <router-link to="/customers" >
-                 <v-icon small color="warning" class="mr-2" >mdi-pencil</v-icon>
+               <router-link to="/UserProfile" >
+                 <v-icon small color="indigo" class="mr-2" >mdi-pencil</v-icon>
               </router-link> 
                 <v-icon small color="red" @click="deleteItem1(item)">mdi-delete</v-icon>
               </template>
@@ -82,10 +82,10 @@
               <v-card-text>
             <v-data-table :headers="employee_headers" :items="employees">
               <template #item.actions="{ item }">
-               <router-link to="/customers" >
-                 <v-icon small color="warning" class="mr-2" >mdi-pencil</v-icon>
+               <router-link to="/CreateAccount" >
+                 <v-icon small color="indigo" class="mr-2" >mdi-pencil</v-icon>
               </router-link> 
-                <v-icon small color="red" @click="deleteItem1(item)">mdi-delete</v-icon>
+                <v-icon small color="red" @click="deleteItem(item)">mdi-delete</v-icon>
               </template>
             </v-data-table>
           </v-card-text>
@@ -147,6 +147,7 @@ export default {
         { text: "Id", value: "_id" },
         { text: "First Name", value: "first_name" },
         { text: "Last Name", value: "last_name" },
+        { text: "BP Number", value: "" },
         { text: "Email", value: "email" },
         { text: "Phone Number", value: "phone_no" },
         { text: "Address", value: "address" },
@@ -225,10 +226,7 @@ export default {
     .catch(error => {
       console.error(error);
     });
-      // console.log(item._id)
-      // this.editedIndex = this.customers.indexOf(item);
-      // this.editedItem = Object.assign({}, item);
-      // this.dialogDelete = true;
+      
     },
 
     deleteItemConfirm() {

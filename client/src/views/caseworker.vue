@@ -66,7 +66,7 @@
           ></v-text-field>
         </v-card-title>
         <v-data-table :headers="headers" :items="complaints">
-          <template #item.actions="{ item }">
+          <template item.actions="{ item }">
             <v-btn color="success">Accept</v-btn>
           </template>
         </v-data-table>

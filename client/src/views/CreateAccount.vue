@@ -17,7 +17,7 @@
           <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
 
-        <v-btn text color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4" route to="/Admin">
           <span class="white--text">Sign Out</span>
           <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -90,7 +90,13 @@
                 label="Last Name"
                 required
               ></v-text-field>
-
+              <v-text-field
+                class="ma-6"
+                v-model="bp_number"
+                :counter="10"
+                label="BP Number"
+                required
+              ></v-text-field>
               <v-text-field
                 class="ma-6"
                 v-model="email"
@@ -128,7 +134,7 @@
                 class="ma-6"
                 v-model="password"
                 :counter="10"
-                label="Password(BP number)"
+                label="Password"
                 required
               ></v-text-field>
 
@@ -248,6 +254,7 @@ export default {
       //   v => !!v || 'Last Name is required',
       //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       // ],
+      bp_number: "",
       email: "",
       // emailRules: [
       //   v => !!v || 'E-mail is required',
@@ -319,6 +326,7 @@ export default {
       let newUser = {
         first_name: this.first_name,
         last_name: this.last_name,
+        bp_number: this.bp_number,
         email: this.email,
         phone_no: this.phone_no,
         address: this.address,

@@ -16,7 +16,7 @@
         <v-icon right color="white">circle_notifications</v-icon>
       </v-btn>
 
-      <v-btn text color="blue-grey darken-4">
+      <v-btn text color="blue-grey darken-4" route to="/">
         <span class="white--text">Sign Out</span>
         <v-icon right color="white">exit_to_app</v-icon>
       </v-btn>
@@ -57,16 +57,11 @@
         <v-card-title>
           Customer Complaints
           <v-spacer></v-spacer>
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          ></v-text-field>
+         
         </v-card-title>
-        <v-data-table :headers="headers" :items="complaints" :search="search">
-          <template #item.actions="{ item }">
+        <v-data-table :headers="headers" :items="complaints">
+          <template  #item.actions="{ item }">
+            <v-icon small color="red" @click="deleteItem1(item)">mdi-delete</v-icon>
             <router-link to="/Assigncaseworker">
               <v-span>Read More</v-span>
             </router-link>
@@ -91,11 +86,13 @@ export default {
       ],
 
       headers: [
+        {text: "ID", value: "_id"},
+        { text: "Date", value: "date" },
         { text: "User Name", value: "username" },
         { text: "Address", value: "address" },
         { text: "Phone Number", value: "phone_no" },
-        { text: "Date", value: "date" },
         { text: "Select", value: "select" },
+        { text: "Department", value: "department" },
         { text: "Description", value: "description" },
         { text: "Action", value: "actions", sortable: false },
       ],
@@ -108,7 +105,8 @@ export default {
     async fetchComplaints() {
       axios({
         method: "get",
-        url: "http://localhost:3000/complaints",
+        url: "http://localhost:3000/complaints"
+        ,
       })
         .then((response) => {
           this.complaints = response.data;
@@ -116,8 +114,30 @@ export default {
         })
         .catch((error) => {
           console.error(error);
-        });
+        })
     },
-  },
+         deleteItem1(item) {
+      axios
+    .delete(`http://localhost:3000/complaints/${item._id}`)
+    .then(res => {
+      if(res.data.success){
+       this.complaints = this.complaints.filter(complaint => complaint._id != item._id)
+      }
+      else{
+        console.log('not success')
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+      
+    },
+
+    deleteItemConfirm() {
+      this.complaints.splice(this.editedIndex, 1);
+      this.closeDelete();
+    },
+    },
+  
 };
 </script>

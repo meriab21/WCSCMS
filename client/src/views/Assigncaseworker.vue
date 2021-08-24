@@ -82,7 +82,7 @@
 
               <v-list-item-content>
                 <v-list-item-title>
-                  User Database Record <strong>ID {{ item }}</strong>
+                  Case Worker <strong>ID {{ item }}</strong>
                 </v-list-item-title>
               </v-list-item-content>
 
@@ -104,6 +104,8 @@
 export default {
   data: () => ({
     benched: 0,
+    drawer: false,
+    links: [],
   }),
   computed: {
     items() {

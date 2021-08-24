@@ -6,8 +6,9 @@ const ComplaintSchema = new Schema({
  username: String,
  address: String,
  phone_no: Number,
- complaint: String,
- department: String
+ select: String,
+ department: String,
+ description: String,
 },{collection: "complaint"});
 const Complaint = mongoose.model('Complaint', ComplaintSchema)
 module.exports = Complaint;

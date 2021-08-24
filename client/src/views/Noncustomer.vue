@@ -51,9 +51,7 @@
         Send
       </v-btn>
 
-      <v-btn color="success" class="mr-4" @click="validate">
-        Send
-      </v-btn>
+      
     </v-form>
   </v-container>
 </template>

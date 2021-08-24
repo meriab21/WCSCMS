@@ -62,7 +62,7 @@ const router = new VueRouter({
         {path:'/SendBill',component:SendBill},
         {path:'/OperationMaintenance',component:OperationMaintenance},
         {path:'/AboutUs',component:AboutUs},
-        {path:'/user-profile',component:UserProfile},
+        {path:'/UserProfile',component:UserProfile},
         {path:'/Forgot-password',component:ForgotPassword},
         {path:'/Manager',component:Manager},
         {path:'/Rating',component:Rating},
@@ -70,7 +70,7 @@ const router = new VueRouter({
         {path:'/View-status',component:ViewStatus},
         {path:'/case-worker',component:caseworker},
         {path:'/warning',component:Warning},
-        {path:'/Assigncaseworker',component:Assigncaseworker},    
+        {path:'/Assigncaseworker',component:Assigncaseworker}, 
       ]
  })
  Vue.use(vuetify);

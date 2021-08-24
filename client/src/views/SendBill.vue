@@ -30,9 +30,9 @@
             </v-col>
 
             <v-text-field
-              v-model="username"
-              :rules="[(v) => !!v || ' Username is required']"
-              label="Username"
+              v-model="bp_number"
+              :rules="[(v) => !!v || ' Bp Number is required']"
+              label="Bp Number"
               required
             ></v-text-field>
             <v-text-field
@@ -75,7 +75,7 @@ export default {
 
       valid: true,
       date: "",
-      username: "",
+      bp_number: "",
       service_charge: "",
       payment_date: "",
     };

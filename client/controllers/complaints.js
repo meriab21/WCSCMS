@@ -40,7 +40,7 @@ app.get('/complaints/:id', (req, res) => {
       description: req.body.description,
     });
         newComplaint.save((error, complaint) => {
-        if (error) { console.log(error); }
+        if (error) { console.log(error); return}
         res.send(complaint);
         });
     });

@@ -21,7 +21,7 @@
         <v-btn text name="non-customer" route to="/Noncustomer">
           Non-customer
         </v-btn>
-        <v-btn text name="login" route to="/login">
+        <v-btn text name="login" route to="/Login">
           Log in
         </v-btn>
         <!-- <router-link to="/Noncustomer" tag="v-btn">
